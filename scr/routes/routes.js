@@ -1,24 +1,19 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const localPass = require('../passport/local-auth');
+const jsonParser = bodyParser.json();
 
 
-router.get('/', (req, res, next ) => {
-    
-});
 
-router.get('/singup', (req, res, next) => {
+router.post('/singup', jsonParser, passport.authenticate('local-signup', {
+    successRedirect: '/',
+    failureRedirect: '/signup',
+    passReqToCallback: true
+}));
 
-});
-
-router.post('/singup', (req, res, next) => {
-    
-});
-
-router.get('/login', (req, res, next) => {
-
-});
-
-router.post('/login', (req, res, next) => {
+router.post('/login', jsonParser, (req, res, next) => {
     
 });
 
