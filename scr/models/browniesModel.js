@@ -22,6 +22,16 @@ const Brownies = {
             console.log('here');
             return err;
         });
+    },
+    addNewBrownie : function( newBrownie ){
+        return browniesCollection
+        .create( newBrownie )
+        .then( createdBrownie => {
+            return createdBrownie;
+        })
+        .catch( err => {
+            return err;
+        })
     }
 };
 
