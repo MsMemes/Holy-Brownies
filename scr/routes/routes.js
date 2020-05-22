@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const localPass = require('../passport/local-auth');
 const { Brownies } = require('../models/browniesModel');
+const { Pasteles } = require('../models/pastelModel');
 const { Users } = require( '../models/userModel' );
 const cors = require('../middlewares/cors');
 const validate = require('../middlewares/validateAdmiToken');
@@ -74,16 +75,92 @@ router.get('/search/:producto', ( req, res ) => {
 // Ruta para guardar un nuevo brownie
 router.post('/addNewBrownie', [jsonParser, validate], ( req, res ) => {
     let ingrediente = req.body.ingrediente;
+    let precio = req.body.precio;
 
-    if(!ingrediente){
-        res.statusMessage = "Please send the new ingredient";
+    if(!ingrediente || !precio){
+        res.statusMessage = "Please send all the fields required";
         return res.status( 406 ).end()
     }
 
-    const newBrownie = { ingrediente }
+    const newBrownie = { ingrediente, precio }
 
     Brownies
     .addNewBrownie( newBrownie )
+    .then( results => {
+        return res.status( 201 ).json( results );
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    });
+})
+
+// Ruta para borrar un brownie
+router.delete('/borrarBrownie/:ingrediente', validate, ( req, res ) => {
+
+    let ingrediente = req.params.ingrediente;
+
+    if(!ingrediente){
+        res.statusMessage = "Please send the brownie to delete";
+        return res.status( 406 ).end()
+    }
+    Brownies.deleteBrownie(ingrediente)
+    .then( result => {
+        if(result.deletedCount > 0){
+            return res.status( 200 ).end();
+        }
+        else{
+            res.statusMessage = "That brownie was not found in the db";
+        return res.status( 404 ).end();
+        }
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+    })
+})
+
+// Ruta para modificar el precio de un brownie
+router.patch('/modificarBrownie/:brownie', [validate, jsonParser], ( req, res ) => {
+    let ingrediente = req.params.brownie;
+    let newPrecio = req.body.precio;
+
+    if(!ingrediente || !newPrecio){
+        res.statusMessage = "Please send all the fields required";
+        return res.status( 406 ).end()
+    }
+
+    Brownies.modificarBrownie(ingrediente, newPrecio)
+    .then( results => {
+        if(results.nModified > 0){
+            return res.status( 202 ).json(results);
+        }
+        else{
+            res.statusMessage = "There is no brownie with the name passed";
+        return res.status( 409 ).end();
+        }
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+    })
+})
+
+// Ruta para agregar un pastel
+router.post('/addNewPastel', [jsonParser, validate], ( req, res ) =>{
+    let name = req.body.name;
+    let precio = req.body.precio;
+
+    if(!name || !precio){
+        res.statusMessage = "Please send all the fields required";
+        return res.status( 406 ).end()
+    }
+
+    const newPastel = { name, precio };
+
+    console.log(newPastel);
+
+    Pasteles.addNewPastel( newPastel )
     .then( results => {
         return res.status( 201 ).json( results );
     })

@@ -4,6 +4,10 @@ const browniesSchema = mongoose.Schema({
     ingrediente : {
         type : String,
         require : true
+    },
+    precio : {
+        type : Number,
+        require : true
     }
 });
 
@@ -19,7 +23,6 @@ const Brownies = {
             return results;
         })
         .catch( err => {
-            console.log('here');
             return err;
         });
     },
@@ -31,7 +34,28 @@ const Brownies = {
         })
         .catch( err => {
             return err;
+        });
+    },
+    deleteBrownie : function( ingrediente ){
+        return browniesCollection
+        .deleteOne( {ingrediente : ingrediente} )
+        .then( results =>{
+            return results;
         })
+        .catch( err => {
+            console.log('here');
+            return err;
+        });
+    },
+    modificarBrownie : function(ingrediente, newPrecio){
+        return browniesCollection
+        .updateOne({ingrediente : ingrediente}, {$set : {precio : newPrecio}})
+        .then( results => {
+            return results;
+        })
+        .catch( err => {
+            return err;
+        });
     }
 };
 
