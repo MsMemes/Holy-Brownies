@@ -17,8 +17,14 @@ const userSchema = mongoose.Schema({
     password : {
         type : String,
         required: true
+    },
+    phone : {
+        type : String,
+        required : true
     }
 });
+
+mongoose.pluralize(null);
 
 const userModel = mongoose.model( 'users', userSchema );
 

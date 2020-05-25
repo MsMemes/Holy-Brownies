@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const passport = require('passport');
-const localPass = require('../passport/local-auth');
+const bcrypt = require ( 'bcryptjs' );
+const jsonwebtoken = require( 'jsonwebtoken' );
 const { Brownies } = require('../models/browniesModel');
 const { Pasteles } = require('../models/pastelModel');
 const { Paquetes } = require('../models/paqueteModel');
 const { Users } = require( '../models/userModel' );
+const {SECRET_TOKEN} = require('../config'); 
 const cors = require('../middlewares/cors');
 const validate = require('../middlewares/validateAdmiToken');
 const jsonParser = bodyParser.json();
@@ -19,14 +20,14 @@ const jsonParser = bodyParser.json();
     passReqToCallback: true
 }));*/
 router.post('/singup', jsonParser, (req, res ) => {
-    let {firstName, lastName, email, password} = req.body;
+    let {firstName, lastName, email, password, phone} = req.body;
 
-    if( !firstName || !lastName || !email || !password ){
+    if( !firstName || !lastName || !email || !password || !phone ){
         res.statusMessage = "Parameter missing in the body of the request.";
         return res.status( 406 ).end();
     }
     
-    let newUser = { firstName, lastName, password, email };
+    let newUser = { firstName, lastName, password, email, phone };
 
     Users
         .createUser( newUser )
@@ -40,8 +41,53 @@ router.post('/singup', jsonParser, (req, res ) => {
 })
 
 // Ruta del login
-router.post('/login', jsonParser, (req, res, next) => {
-    
+router.post('/login', jsonParser, (req, res ) => {
+    let { email, password } = req.body;
+
+    if( !email || !password ){
+        res.statusMessage = "Parameter missing in the body of the request.";
+        return res.status( 406 ).end();
+    }
+
+    Users
+        .getUserByEmail( email )
+        .then( user => {
+
+            if( user ){
+                bcrypt.compare( password, user.password )
+                    .then( result => {
+                        if( result ){
+                            let userData = {
+                                firstName : user.firstName,
+                                lastName : user.lastName,
+                                email : user.email
+                            };
+
+                            jsonwebtoken.sign( userData, SECRET_TOKEN, { expiresIn : '1m' }, ( err, token ) => {
+                                if( err ){
+                                    res.statusMessage = "Something went wrong with generating the token.";
+                                    return res.status( 400 ).end();
+                                }
+                                return res.status( 200 ).json( { token } );
+                            });
+                        }
+                        else{
+                            throw new Error( "Invalid credentials" );
+                        }
+                    })
+                    .catch( err => {
+                        res.statusMessage = err.message;
+                        return res.status( 400 ).end();
+                    });
+            }
+            else{
+                throw new Error( "User doesn't exists!" );
+            }
+        })
+        .catch( err => {
+            res.statusMessage = err.message;
+            return res.status( 400 ).end();
+        });
 });
 
 // Ruta del search bar

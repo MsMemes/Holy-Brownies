@@ -3,11 +3,15 @@ const mongoose = require('mongoose');
 const pastelSchema = mongoose.Schema({
     name : {
         type : String,
-        require : true
+        required : true
     },
     precio : {
         type : Number,
-        require : true
+        required : true
+    },
+    url : {
+        type : Number,
+        required : false
     }
 });
 

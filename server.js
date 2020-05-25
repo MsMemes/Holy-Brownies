@@ -5,23 +5,21 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const {DATABASE_URL} = require('./scr/config');
 const mongoose = require('mongoose');
-const passport = require('passport');
-const session = require('express-session');
 const jsonParser = bodyParser.json();
 
 // Init
 const app = express();
-require('./scr/passport/local-auth');
+app.use( express.static( "public" ) );
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(session({
-    secret: 'mysecretsession',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//     secret: 'mysecretsession',
+//     resave: false,
+//     saveUninitialized: false
+// }));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 
 // Routes
