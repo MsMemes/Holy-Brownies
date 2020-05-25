@@ -14,31 +14,39 @@ const jsonParser = bodyParser.json();
 
 
 // Ruta del registro
-/*router.post('/singup', jsonParser, passport.authenticate('local-signup', {
-    successRedirect: '/',
-    failureRedirect: '/signup',
-    passReqToCallback: true
-}));*/
-router.post('/singup', jsonParser, (req, res ) => {
+router.post( '/register', jsonParser, ( req, res ) => {
     let {firstName, lastName, email, password, phone} = req.body;
 
-    if( !firstName || !lastName || !email || !password || !phone ){
+    if( !firstName || !lastName || !email || !password, !phone ){
         res.statusMessage = "Parameter missing in the body of the request.";
         return res.status( 406 ).end();
     }
     
-    let newUser = { firstName, lastName, password, email, phone };
+    bcrypt.hash( password, 10 )
+        .then( hashedPassword => {
+            let newUser = { 
+                firstName, 
+                lastName, 
+                password : hashedPassword, 
+                email,
+                phone
+            };
 
-    Users
-        .createUser( newUser )
-        .then( result => {
-            return res.status( 201 ).json( result ); 
+            Users
+                .createUser( newUser )
+                .then( result => {
+                    return res.status( 201 ).json( result ); 
+                })
+                .catch( err => {
+                    res.statusMessage = err.message;
+                    return res.status( 400 ).end();
+                });
         })
         .catch( err => {
             res.statusMessage = err.message;
             return res.status( 400 ).end();
         });
-})
+});
 
 // Ruta del login
 router.post('/login', jsonParser, (req, res ) => {
