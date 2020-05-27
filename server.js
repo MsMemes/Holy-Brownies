@@ -13,13 +13,6 @@ app.use( express.static( "public" ) );
 
 // Middlewares
 app.use(morgan('dev'));
-// app.use(session({
-//     secret: 'mysecretsession',
-//     resave: false,
-//     saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 
 // Routes

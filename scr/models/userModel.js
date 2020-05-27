@@ -31,23 +31,33 @@ const userModel = mongoose.model( 'users', userSchema );
 const Users = {
     createUser : function( newUser ){
         return userModel
-                .create( newUser )
-                .then( user => {
-                    return user;
-                })
-                .catch( err => {
-                    throw new Error( err.message );
-                }); 
+        .create( newUser )
+        .then( user => {
+            return user;
+        })
+        .catch( err => {
+            throw new Error( err.message );
+        }); 
     },
     getUserByEmail: function( email ){
         return userModel
-                .findOne( { email } )
-                .then( user => {
-                    return user;
-                })
-                .catch( err => {
-                    throw new Error( err.message );
-                }); 
+        .findOne( { email } )
+        .then( user => {
+            return user;
+        })
+        .catch( err => {
+            throw new Error( err.message );
+        }); 
+    },
+    borrarUsuario : function(email){
+        return userModel
+        .deleteOne({email : email})
+        .then( results =>{
+            return results;
+        })
+        .catch( err => {
+            return err;
+        });
     }
 }
 

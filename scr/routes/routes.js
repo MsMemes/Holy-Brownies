@@ -3,18 +3,20 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const bcrypt = require ( 'bcryptjs' );
 const jsonwebtoken = require( 'jsonwebtoken' );
-const { Brownies } = require('../models/browniesModel');
-const { Pasteles } = require('../models/pastelModel');
-const { Paquetes } = require('../models/paqueteModel');
+// const { Brownies } = require('../models/browniesModel');
+// const { Pasteles } = require('../models/pastelModel');
+// const { Paquetes } = require('../models/paqueteModel');
+const { Productos } = require('../models/productoModel');
 const { Users } = require( '../models/userModel' );
 const {SECRET_TOKEN} = require('../config'); 
 const cors = require('../middlewares/cors');
 const validate = require('../middlewares/validateAdmiToken');
 const jsonParser = bodyParser.json();
 
+router.use( jsonParser );
 
 // Ruta del registro
-router.post( '/register', jsonParser, ( req, res ) => {
+router.post( '/register', ( req, res ) => {
     let {firstName, lastName, email, password, phone} = req.body;
 
     if( !firstName || !lastName || !email || !password, !phone ){
@@ -49,7 +51,7 @@ router.post( '/register', jsonParser, ( req, res ) => {
 });
 
 // Ruta del login
-router.post('/login', jsonParser, (req, res ) => {
+router.post('/login', (req, res ) => {
     let { email, password } = req.body;
 
     if( !email || !password ){
@@ -108,8 +110,8 @@ router.get('/search/:producto', ( req, res ) => {
         return res.status( 406 ).end();
     }
 
-    Brownies
-    .getBrownieByIngrediente(producto)
+    Productos
+    .getSearchBar(producto)
     .then(productos => {
         console.log(productos);
         if(productos){
@@ -127,20 +129,21 @@ router.get('/search/:producto', ( req, res ) => {
 
 });
 
-// Ruta para guardar un nuevo brownie
-router.post('/addNewBrownie', [jsonParser, validate], ( req, res ) => {
-    let ingrediente = req.body.ingrediente;
+// Ruta para guardar un nuevo producto
+router.post('/addNewProducto', validate, ( req, res ) => {
+    let name = req.body.name;
     let precio = req.body.precio;
+    let tipo = req.body.tipo;
 
-    if(!ingrediente || !precio){
+    if(!name || !precio || !tipo){
         res.statusMessage = "Please send all the fields required";
         return res.status( 406 ).end()
     }
 
-    const newBrownie = { ingrediente, precio }
+    const newProducto = { name, precio, tipo }
 
-    Brownies
-    .addNewBrownie( newBrownie )
+    Productos
+    .addNewProducto( newProducto )
     .then( results => {
         return res.status( 201 ).json( results );
     })
@@ -150,59 +153,59 @@ router.post('/addNewBrownie', [jsonParser, validate], ( req, res ) => {
     });
 })
 
-// Ruta para borrar un brownie
-router.delete('/borrarBrownie/:ingrediente', validate, ( req, res ) => {
+// Ruta para borrar un producto
+router.delete('/borrarProducto/:name', validate, ( req, res ) => {
 
-    let ingrediente = req.params.ingrediente;
+    let name = req.params.name;
 
-    if(!ingrediente){
-        res.statusMessage = "Please send the brownie to delete";
+    if(!name){
+        res.statusMessage = "Please send the product to delete";
         return res.status( 406 ).end()
     }
-    Brownies.deleteBrownie(ingrediente)
+    Productos.deleteProducto(name)
     .then( result => {
         if(result.deletedCount > 0){
             return res.status( 200 ).end();
         }
         else{
-            res.statusMessage = "That brownie was not found in the db";
-        return res.status( 404 ).end();
+            res.statusMessage = "That product was not found in the db";
+            return res.status( 404 ).end();
         }
     })
     .catch( err => {
         res.statusMessage =  "Somethong went wrong with the DB";
-            return res.status( 500 ).end();
+        return res.status( 500 ).end();
     })
 })
 
-// Ruta para modificar el precio de un brownie
-router.patch('/modificarBrownie/:brownie', [validate, jsonParser], ( req, res ) => {
-    let ingrediente = req.params.brownie;
+// Ruta para modificar el precio de un producto
+router.patch('/modificarProducto/:name', validate, ( req, res ) => {
+    let name = req.params.name;
     let newPrecio = req.body.precio;
 
-    if(!ingrediente || !newPrecio){
+    if(!name || !newPrecio){
         res.statusMessage = "Please send all the fields required";
         return res.status( 406 ).end()
     }
 
-    Brownies.modificarBrownie(ingrediente, newPrecio)
+    Productos.modificarProducto(name, newPrecio)
     .then( results => {
         if(results.nModified > 0){
             return res.status( 202 ).end();
         }
         else{
             res.statusMessage = "There is no brownie with the name passed";
-        return res.status( 409 ).end();
+            return res.status( 409 ).end();
         }
     })
     .catch( err => {
         res.statusMessage =  "Somethong went wrong with the DB";
-            return res.status( 500 ).end();
+        return res.status( 500 ).end();
     })
 })
 
 // Ruta para agregar un pastel
-router.post('/addNewPastel', [jsonParser, validate], ( req, res ) =>{
+router.post('/addNewPastel', validate, ( req, res ) =>{
     let name = req.body.name;
     let precio = req.body.precio;
 
@@ -251,7 +254,7 @@ router.delete('/borrarPastel/:name', validate, ( req, res ) =>{
 });
 
 // Ruta para modificar el precio de un pastel
-router.patch('/modificarPastel/:pastel', [validate, jsonParser], ( req, res ) => {
+router.patch('/modificarPastel/:pastel', validate, ( req, res ) => {
     let name = req.params.pastel;
     let newPrecio = req.body.precio;
 
@@ -277,7 +280,7 @@ router.patch('/modificarPastel/:pastel', [validate, jsonParser], ( req, res ) =>
 })
 
 // Ruta para agregar un paquete
-router.post('/addNewPaquete', [jsonParser, validate], ( req, res ) =>{
+router.post('/addNewPaquete', validate, ( req, res ) =>{
     let name = req.body.name;
     let precio = req.body.precio;
 
@@ -296,7 +299,7 @@ router.post('/addNewPaquete', [jsonParser, validate], ( req, res ) =>{
         res.statusMessage =  "Somethong went wrong with the DB";
         return res.status( 500 ).end();
     });
-})
+});
 
 // Ruta para borrar un paquete
 router.delete('/borrarPaquete/:name', validate, ( req, res ) =>{
@@ -324,7 +327,7 @@ router.delete('/borrarPaquete/:name', validate, ( req, res ) =>{
 });
 
 // Ruta para modificar el precio de un paquete
-router.patch('/modificarPaquete/:name', [validate, jsonParser], ( req, res ) => {
+router.patch('/modificarPaquete/:name', validate, ( req, res ) => {
     let name = req.params.name;
     let newPrecio = req.body.precio;
 
@@ -347,6 +350,63 @@ router.patch('/modificarPaquete/:name', [validate, jsonParser], ( req, res ) => 
         res.statusMessage =  "Somethong went wrong with the DB";
             return res.status( 500 ).end();
     })
+});
+
+// Ruta para regresar un usario por correo
+router.get('/perfil/:correo', ( req, res ) => {
+    let correo = req.params.correo;
+    console.log(correo);
+
+    if(!correo){
+        res.statusMessage = "Please send the email";
+        return res.status( 406 ).end();
+    }
+
+    Users.getUserByEmail(correo)
+    .then(results => {
+        console.log(results);
+        if(!results){
+            res.statusMessage = "No user was found with that email";
+            return res.status( 404 ).end();
+        }
+        else{
+            return res.status( 202 ).json(results);
+        }
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+});
+
+// Ruta para agregar un nuevo pedido 
+router.post('addNewPedido', ( req, res ) => {
+
+});
+
+// Ruta para eliminar un usuario
+router.delete('/deleteUsuario/:correo', validate, ( req, res ) => {
+    let correo = req.params.correo;
+
+    if(!correo){
+        res.statusMessage = "Send the email of the user you want to delete";
+        return res.status( 406 ).end();
+    }
+
+    Users.borrarUsuario(correo)
+    .then( results => {
+        if(results.deletedCount > 0){
+            return res.status( 200 ).end();
+        }
+        else{
+            res.statusMessage = "There was no user with that email";
+            return res.status( 404 ).end();
+        }
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    });
 })
 
 module.exports = router;
