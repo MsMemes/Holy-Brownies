@@ -1,0 +1,842 @@
+/**{
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box; 
+  }
+  body{
+    font-family: Verdana;
+    
+  }
+  /*HEADER ITEMS STYLE*/
+  /*header{
+    display: flex;
+    justify-content: flex-end;
+    background: #ffde59;
+  }
+  .topSection{
+    display: flex;
+    width: 140px;
+    margin-right: 200px;
+  }
+  .topSection>li{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .topSection>li>a{
+    color:black;
+    font-size: 13px;
+  }
+  .IniciarSesion{
+    margin-right: 10px;
+    width: 100px;
+  }
+  
+  .IniciarSesion>a:hover{
+    color: white;
+    transition: background-color 1s;
+  }
+  #carritoImg{
+    width: 20px;
+    height: 20px;
+  }
+  .menuPrincipal{
+     display: flex;
+     justify-content: center;
+     margin-top: -25px;
+   }
+  .logo{
+    display: block;
+    margin: 5px ;
+    width: 180px;
+    height: 180px;
+   /* border: 2px solid black;*/
+  /*}
+  .leftMenuItems{
+   /*border: 2px solid black;*/
+   /* margin-left: 100px;
+    margin-right: 15px;
+  }
+  .rightMenuItems{
+    /*border: 2px solid black;*/
+  /*  margin-right: 80px;
+    margin-left: 15px;
+  }
+  #menuStyle{
+   /* border: 2px solid black;*/
+  /*  margin-top: 80px;
+    margin-bottom: 80px;
+  }
+  #menuStyle>li{
+    display: inline-block;
+    line-height: 50px;
+  }
+  #menuStyle>li>a{
+    color:black;
+    font-size: 16px;
+    padding: 15px 18px;
+    font-weight: bold;
+    
+  }
+  #menuStyle>li>a:hover{
+  background-color:#ff5757;
+  color: white;
+  transition: background-color 1s;
+  }
+  /*END OF HEADER ITEMS STYLE*/
+/*
+.topnav{
+    display: flex;
+}
+.topnav input[type=text] {
+    
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+    border: 2px solid pink;
+    border-radius: 3px;
+    color: black;
+  }
+  .topnav button {
+    padding: 8px;
+    background: palevioletred;
+    font-size: 17px;
+    border: none;
+    color: white;
+    cursor: pointer;
+   
+  }*/
+/*
+.brownieMenu{
+    margin-left: 225px;
+    margin-right: 225px;
+    display: flex;
+    border: 2px solid black;
+  }
+  .brownieMenu img{
+      margin: 50px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+  }
+  .brownieMenu p{
+      text-align: center;
+      margin-top: 10px;
+      color: black;
+
+  }
+  .brownieMenu2nd{
+    margin-left: 225px;
+    margin-right: 225px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex;
+  }
+  .brownieMenu2nd img{
+    margin: 50px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.brownieMenu2nd p{
+    text-align: center;
+    margin-top: 10px;
+    color: black;
+}*/
+
+*{
+  padding: 0;
+  margin:0;
+  box-sizing: border-box; 
+}
+/*MENU*/
+body{
+  font-family: verdana;
+  font-weight: bold;
+}
+.logoBuscCarrito{
+  height: 100px;
+  background: #f8dd71;
+  font-family: verdana;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  padding: 5px;
+}
+.logo{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo p a{
+  text-decoration: none;
+  font-size: 22px;
+  color: white;
+  margin: -30px;
+  margin-top: 40px;
+}
+.buscador{
+  display: flex;  
+  justify-content: space-around;
+}
+.barraBuscadora{
+  border-radius: 10px;
+  width: 380px;
+  height: 35px;
+  border: none;
+}
+.buscador ul li{
+  list-style: none;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+.buscador ul li a{
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  list-style: none;
+}
+.buscador li a:hover{
+  background-color:#ff5757;
+  color: white;
+  transition: background-color 1s;
+  border-radius: 10px;
+}
+.menu{
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  /*width: 50%;*/
+  list-style: none;
+
+}
+.menu li a{
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+.menu li a:hover{
+  background-color:#ff5757;
+  color: white;
+  transition: background-color 1s;
+  border-radius: 10px;
+}
+.topSection{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+.topSection li a{
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-weight: normal;
+}
+.IniciarSesion{
+  margin-right: 10px;
+}
+.IniciarSesion>a:hover{
+  color: white;
+  transition: background-color 1s;
+}
+#carritoImg{
+  width: 25px;
+  height:25px;
+}
+.logoImg{
+  width: 80px;
+  height: 80px;
+}
+.itemNumber{
+  background-color: #ff5757;
+  border-radius: 5px;
+  padding: 2px;
+  color: white;
+}
+.burger{
+  display: none;
+  cursor: pointer;
+}
+.burger div{
+  width: 25px;
+  height: 5px;
+  background-color:#e46274;
+  margin: 5px;
+}
+.menuLogin{
+  display: none;
+}
+.brownieMenu{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 250px;
+  margin-right: 250px;
+  list-style: none;
+}
+.brownieMenu li{
+  margin-right: -20px;
+  margin-left: -20px;
+}
+.brownieMenu img{
+  margin: 50px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.brownieNombre{
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+}
+.browniePrecio{
+  color: black;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 10px;
+}
+.brownieMenu2nd li{
+  margin-right: -20px;
+  margin-left: -20px;
+}
+.brownieMenu2nd{
+  display: flex;
+  justify-content: space-around;
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 80px;
+  margin-bottom: 80px; 
+  list-style: none;
+}
+.brownieMenu2nd img{
+  margin: 50px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.brownieMenu3rd{
+  display: flex;
+  margin-left: 250px;
+  margin-right: 250px;
+  justify-content: space-around;
+  list-style: none;
+}
+.brownieMenu3rd li{
+  margin-right: -20px;
+  margin-left: -20px;
+}
+.brownieMenu3rd img{
+  margin: 50px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.itemNumberCart{
+  margin-left: -5px;
+  margin-top: -8px;
+}
+/*--------------------FOOTER-----------------------*/
+footer{
+  background-color: #ff5757;
+  line-height: 80px;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.suscribir{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.barraSuscribir{
+  border-radius: 10px;
+  width: 380px;
+  height: 35px;
+  border: none;
+  margin-top: 25px;
+}
+.suscribir ul li{
+  list-style: none;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+.suscribir ul li a{
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  list-style: none;
+}
+.suscribir li a:hover{
+  background-color:#f8dd71;
+  color: black;
+  transition: background-color 1s;
+  border-radius: 10px;
+}
+.infoContacto{
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  font-size: 17px;
+}
+
+/*NEWWWWWWWWWWWWWW*/
+.container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 100px;
+  z-index: 0;
+}
+.image{
+  margin-right: 70px;
+  margin-left: 70px;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+.add-cart{
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+    line-height: 65px;
+    background-color:#ff5757;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+.add-cart:hover{
+  background-color: rgb(252, 122, 144);
+}
+@media (max-width: 599px){
+  .logoBuscCarrito{
+      /*  display: flex;
+        justify-content: space-around;*/
+       /* justify-content: space-around;*/
+        height: 130px;
+
+    }
+    .barraBuscadora{
+        border-radius: 10px;
+        width: 300px;
+        height: 25px;
+        border: none;
+    }
+    .buscador{
+        margin-top: 80px;
+        margin-left: -340px;
+        margin-right: -50px;
+    }
+    .buscador ul li{
+        font-size: 15px;
+    }
+    .buscador ul li{
+        margin-top: 2px;
+    }
+    .logo{
+        margin-left: 100px;
+        margin-top :-40px;
+    }
+    .logo p a{
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        padding: 10px;
+        margin: -30px;
+        margin-top: 40px;
+    }
+    .menu{
+        position: absolute;
+        left: 0px;
+        font-size: 14px;
+        height: 92vh;
+        top: 8.5vh;
+        background-color:#f8dd71 ;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(-100%);
+        transition: transform 0.5s ease-in;
+    }
+    .menu-active{
+        transform: translateX(0%);
+        transform: translateY(10%);
+        z-index: 1;
+    }
+    .menu li{
+        opacity: 0;
+       
+    }
+    .burger{
+        display: block;
+        margin-top: -20px;
+        margin-right: -60px;
+    }
+    .logoImg{
+        margin-left: 10px;
+        width: 55px;
+        height: 55px;
+    }
+      #carritoImg{ 
+          margin-top:-25px ;
+          width: 25px;
+          height:25px;
+        }
+        .IniciarSesion{
+            display: none;
+        }
+        
+        .top{
+            margin-top: 0px;
+            margin-right: 20px;
+        }
+        .itemNumberCart{
+          margin-left: -5px;
+          margin-top: -17px;
+
+        }
+        .menuLogin{
+          display: block;
+      }
+      .toppings ul{
+        margin:10px
+      }
+      .toppings ul li{
+        margin-right: 10px;
+      }
+      .brownieMenu{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+      }
+      .brownieMenu img{
+        width: 150px;
+        height: 150px;
+      }
+      .brownieMenu li{
+        display: flex;
+      }
+      .brownieInfo{
+         display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+      }
+      .brownieInfo{
+        margin: auto;
+      }
+      .brownieMenu>li>p{
+       margin-left: 10px;
+       margin-top: 30px;
+       margin-bottom: 100px;
+      }
+      .cantidad{
+      margin-top: 75px;
+      margin-left: 50px;
+      margin-bottom: 50px;
+      }
+      .cantidadInput{
+        width: 30px;
+        height: 30px;
+        border:1px solid;
+       border-radius: 5px;
+      }
+      .brownieMenu2nd{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+      }
+      .brownieMenu2nd img{
+        width: 150px;
+        height: 150px;
+      }
+      .brownieMenu2nd li{
+        display: flex;
+      }
+      .brownieMenu2nd>li>p{
+       border: 2px solid black;
+       margin-left: 10px;
+       margin-top: 30px;
+       margin-bottom: 100px;
+      }
+      .brownieMenu3rd{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+      }
+      .brownieMenu3rd img{
+        width: 150px;
+        height: 150px;
+      }
+      .brownieMenu3rd li{
+        display: flex;
+      }
+      .brownieMenu3rd>li>p{
+       border: 2px solid black;
+       margin-left: 10px;
+       margin-top: 30px;
+       margin-bottom: 100px;
+      }
+      footer{
+        display: block;
+      }
+    }
+ 
+  @keyframes menuLinkFade{
+      from{
+          opacity: 0;
+          transform: translateX(50px);
+      }
+      to{
+          opacity: 1;
+          transform: translateX(0px);
+      }
+  }
+  @media (min-width: 600px) and (max-width: 900px){
+      body{
+          overflow-x: hidden;
+      }
+      .logoBuscCarrito{
+        /*  display: flex;
+          justify-content: space-around;*/
+         /* justify-content: space-around;*/
+          height: 130px;
+
+      }
+      .barraBuscadora{
+          border-radius: 10px;
+          width: 350px;
+          height: 30px;
+          border: none;
+      }
+      .buscador{
+          margin-top: 80px;
+          margin-left: -400px;
+          margin-right: -50px;
+      }
+      .buscador ul li{
+          font-size: 15px;
+      }
+      .buscador ul li{
+          margin-top: 2px;
+      }
+      .logo{
+          margin-left: 100px;
+          margin-top :-40px;
+      }
+      .logo p a{
+          text-decoration: none;
+          font-size: 20px;
+          color: white;
+          padding: 10px;
+          margin: -30px;
+          margin-top: 40px;
+      }
+      .menu{
+          position: absolute;
+          left: 0px;
+          font-size: 14px;
+          height: 92vh;
+          top: 8.5vh;
+          background-color:#f8dd71 ;
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          align-items: center;
+          width: 50%;
+          transform: translateX(-100%);
+          transition: transform 0.5s ease-in;
+      }
+      .menu-active{
+          transform: translateX(0%);
+          transform: translateY(10%);
+          z-index: 1;
+      }
+      .menu li{
+          opacity: 0;
+         
+      }
+      .burger{
+          display: block;
+          margin-top: -10px;
+          margin-right: -60px;
+      }
+      .logoImg{
+          margin-left: 10px;
+          width: 60px;
+          height: 60px;
+      }
+      #carritoImg{ 
+          margin-top:-20px ;
+          width: 25px;
+          height:25px;
+        }
+        .IniciarSesion{
+            display: none;
+        }
+        .itemNumberCart{
+          margin-left: -5px;
+          margin-top: -17px;
+        }
+        .top{
+            margin-top: 0px;
+        }
+        .menuLogin{
+          display: block;
+      }
+
+      
+.brownieMenu{
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-around;
+  list-style: none;
+}
+.brownieMenu li{
+  padding-left: 25px;
+}
+.brownieMenu img{
+  margin: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 150px;
+  height: 150px;
+}
+.brownieNombre{
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+}
+.browniePrecio{
+  color: black;
+  font-weight: lighter;
+  text-align: center;
+  margin-top: 10px;
+}
+.brownieMenu2nd{
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.brownieMenu2nd li{
+  padding-left: 25px;
+}
+.brownieMenu2nd img{
+  margin: 25px;
+  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+}
+     
+.brownieMenu3rd{
+  display: flex;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-top: 20px;
+  justify-content: space-around;
+  list-style: none;
+}
+.brownieMenu3rd li{
+  padding-left: 25px;
+}
+
+.brownieMenu3rd img{
+  margin: 25px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+}
+
+.itemNumberCart{
+  margin-left: -5px;
+  margin-top: -16px;
+}
+.cantidad{
+  display: flex;
+  list-style: none;
+  margin-top: 15px;
+  margin-left: 40px;
+}
+.btnInc{
+  cursor: pointer;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  background-color:#ff5757;
+  border-radius: 5px;
+  color: white;;
+}
+.btnInc:hover{
+  background-color: rgb(252, 122, 144);
+}
+.btnDec{
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 25px;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  background-color:#ff5757;
+  border-radius: 5px;
+  color: white;;
+}
+.btnDec:hover{
+  background-color: rgb(252, 122, 144);
+}
+
+.btnAgregarPedido{
+  display: flex;
+  justify-content: space-around;
+}
+.btnAgregarPedido li{
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  font-size: 16px;
+  height: 45px;
+  width: 250px;
+  text-align: center;
+  list-style: none;
+  line-height: 45px;
+  background-color:#ff5757;
+  border-radius: 5px;
+  color: white;
+}
+.btnAgregarPedido>li:hover{
+  background-color: rgb(252, 122, 144);
+}
+.cantidadInput{
+  width: 20%;
+  height: 30px;
+  border:1px solid;
+ border-radius: 5px;
+}
+footer{
+  display: block;
+}
+      
+      }
+      @keyframes menuLinkFade{
+          from{
+              opacity: 0;
+              transform: translateX(50px);
+          }
+          to{
+              opacity: 1;
+              transform: translateX(0px);
+          }
+      }

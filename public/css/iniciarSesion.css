@@ -1,0 +1,120 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+  
+}
+
+.logoImg{
+    margin-left: 10px;
+    width: 150px;
+    height: 150px;
+}
+header{
+    height: 35vh;
+    width: 100%;
+    background-color: #f5d96a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  /*  user-select: none;*/
+}
+header a{
+    margin-left: -90px;
+    font-size: 2.5rem;
+    color: white; 
+}
+html{
+    font-family: Verdana;
+}
+.forms{
+    position: relative;
+    /*z-index: 1;*/
+    background-color: white;
+    max-width: 400px;
+    margin: 0 auto 70px;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.logo{
+    display: flex;
+    width: 1550px;
+    height: 200px;
+    justify-content: center;
+    background-color:#f5d96a;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.forms input{
+    width: 80%;
+    padding: .5rem;
+    margin: 12px 0px;
+    border: none;
+    border-bottom: 4px solid #fadb60;
+    background: transparent;
+    outline: none;
+}
+.mensaje{
+    margin: 15px 0 0;
+    font-size: 14px;
+}
+a{
+    text-decoration: none;
+    color: lightcoral;
+    font-weight: bold;
+}
+.register-form{
+    display: none;
+}
+/*
+.
+
+header{
+    height: 80vh;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  /*  user-select: none;*/
+/*}
+.main-header{
+    text-align: center;
+}
+
+
+.main-header hr{
+    width: 100%;
+    margin: auto;
+    padding: 3px;
+    background: lightcoral;
+    border: none;
+    margin-bottom: 20px;
+}
+
+*/
+
+.ingresar, .registrar{
+    cursor: pointer;
+    background-color: rgb(245, 124, 124);
+    border-radius: 50px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    margin-top: 50px;
+    transition: 0.5s;
+    margin: 15px;
+    font-weight: bold;
+}
+
+.ingresar:hover, .registrar:hover{
+  background-color: rgb(252, 122, 144);
+  transform: scale(1.2);
+}
