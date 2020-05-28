@@ -6,7 +6,7 @@ $('.mensaje a').click(function(){
 
 let API_TOKEN = 'TokenAdmi'
 function agregarUsuario (firstName, lastName, password,email, phone){
-    let urlCreate = '/singup';
+    let urlCreate = '/register';
     let usuario = {
         firstName:firstName,
         lastName:lastName,

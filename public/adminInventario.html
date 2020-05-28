@@ -30,7 +30,7 @@
               <label for="lname">Nombre del producto</label>
             </div>
             <div class="col-75">
-              <input type="text" id="lname">
+              <input type="text" class="nombreProducto">
             </div>
           </div>
           <div class="row">
@@ -38,7 +38,7 @@
               <label for="lname">Precio</label>
             </div>
             <div class="col-75">
-              <input type="text" id="lname">
+              <input type="text" class="precioProducto">
             </div>
           </div>
           <div class="row">
@@ -46,17 +46,20 @@
               <label for="lname">Tipo</label>
             </div>
             <div class="col-75">
-              <input type="text" id="lname">
+              <input type="text" class="tipoProducto">
             </div>
           </div>
           <div class="row" id="btnsInv">
-            <input class = "btnInventario" type="submit" value="Eliminar">
-             <input class = "btnInventario" type="submit" value="Modificar">
-            <input class = "btnInventario" type="submit" value="Agregar">
-            <input class = "btnInventario" type="submit" value="Ver Inventario">
+            <a class = "btnInventario" id="btnEliminar"  >Eliminar</a>
+             <a class = "btnInventario" id="btnModificar">Modificar</a>
+            <a class = "btnInventario"  id="btnAgregar">Agregar</a>
+            <a class = "btnInventario"  id="btnVer">Ver</a>
           </div>
         </form>
       </div>
-        <script src="../js/admin.js"></script>
+      <div class ="results">
+      
+      </div>
+        <script src="../js/adminInventario.js"></script>
 </body>
 </html>

@@ -58,7 +58,17 @@ const Users = {
         .catch( err => {
             return err;
         });
-    }
+    },
+    verClientes : function() {
+        return userModel
+        .find()
+        .then( todosLosClientes => {
+            return todosLosClientes;
+        })
+        .catch( err => {
+            return err;
+        });
+    },
 }
 
 module.exports = {

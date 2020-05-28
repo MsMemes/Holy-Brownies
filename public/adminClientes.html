@@ -12,7 +12,7 @@
         <div class="logoBuscCarrito">
            <div class="logo">
             <img class ="logoImg" src ="../assets/LogoSinFondo.png" >
-            <p class="NombreNegocio"><a href="#">HOLY BROWNIES </a></p>
+            <p class="NombreNegocio"><a href="admin.html">HOLY BROWNIES </a></p>
             </div>
          
       <!--  </div>-->
@@ -27,17 +27,21 @@
         <form >
           <div class="row">
             <div class="col-25">
-              <label for="lname">Ingresa Correo del cliente</label>
+              <p for="lname">Ingresa Correo del cliente</p>
             </div>
             <div class="col-75">
-              <input type="text" id="lname">
+              <input class="adminUserMail" type="text" id="lname">
             </div>
           </div>
           <div class="row" id="btnsInv">
-            <input class = "btnInventario" type="submit" value="Eliminar">
+            <a class = "btnDeleteUser" type="submit" value="Eliminar">Eliminar</a>
+            <a class = "btnGetCustomers" type="submit" value="Eliminar">Ver Clientes</a>
           </div>
         </form>
       </div>
-        <script src="../js/admin.js"></script>
+      <div class ="results">
+
+      </div>
+        <script src="../js/adminClientes.js"></script>
 </body>
 </html>
