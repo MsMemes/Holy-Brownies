@@ -14,12 +14,8 @@ app.use(express.static("public"));
 // Middlewares
 app.use(morgan('dev'));
 
-
 // Routes
 app.use('/', rutas );
-
-
-
 
 // Starting server
 app.listen( PORT, () => {

@@ -7,7 +7,7 @@ const { Carritos } = require('../models/carritoModel');
 const { Productos } = require('../models/productoModel');
 const { Users } = require( '../models/userModel' );
 const { Pedidos } = require('../models/pedidoModel');
-const {SECRET_TOKEN} = require('../config'); 
+const { SECRET_TOKEN } = require('../config'); 
 const cors = require('../middlewares/cors');
 const validate = require('../middlewares/validateAdmiToken');
 const jsonParser = bodyParser.json();
@@ -72,7 +72,7 @@ router.post('/login', (req, res ) => {
                                 email : user.email
                             };
 
-                            jsonwebtoken.sign( userData, SECRET_TOKEN, { expiresIn : '1m' }, ( err, token ) => {
+                            jsonwebtoken.sign( userData, SECRET_TOKEN, { expiresIn : '10m' }, ( err, token ) => {
                                 if( err ){
                                     res.statusMessage = "Something went wrong with generating the token.";
                                     return res.status( 400 ).end();
@@ -104,31 +104,38 @@ router.post('/login', (req, res ) => {
 
 // Ruta del search bar
 router.get('/search/:producto', ( req, res ) => {
-    let producto = req.params.producto;
-    console.log(producto);
+    // const { sessiontoken } = req.headers;
+    // jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+    //     if( err ){
+    //         res.statusMessage = "Session expired!";
+    //         return res.status( 400 ).end();
+    //     }
 
-    if(!producto){
-        res.statusMessage = "Porfavor ingresa un ingrediente a buscar";
-        return res.status( 406 ).end();
-    }
-
-    Productos
-    .getSearchBar(producto)
-    .then(productos => {
-        console.log(productos);
-        if(productos){
-            return res.status( 200 ).json(productos);
+        let producto = req.params.producto;
+        console.log(producto);
+    
+        if(!producto){
+            res.statusMessage = "Porfavor ingresa un ingrediente a buscar";
+            return res.status( 406 ).end();
         }
-        else{
-            res.statusMessage = "No hay resultados para ", producto;
-            return res.status( 404 ).end();
-        }
-    })
-    .catch( err => {
-        res.statusMessage = "Something went wrong with the DB";
-        return res.status( 500 ).end();
-    })
-
+    
+        Productos
+        .getSearchBar(producto)
+        .then(productos => {
+            console.log(productos);
+            if(productos){
+                return res.status( 200 ).json(productos);
+            }
+            else{
+                res.statusMessage = "No hay resultados para ", producto;
+                return res.status( 404 ).end();
+            }
+        })
+        .catch( err => {
+            res.statusMessage = "Something went wrong with the DB";
+            return res.status( 500 ).end();
+        })
+    // });
 });
 
 // Ruta para guardar un nuevo producto
@@ -208,75 +215,99 @@ router.patch('/modificarProducto/:name', validate, ( req, res ) => {
 
 // Ruta para regresar un usario por correo
 router.get('/perfil/:correo', ( req, res ) => {
-    let correo = req.params.correo;
-    console.log(correo);
-
-    if(!correo){
-        res.statusMessage = "Please send the email";
-        return res.status( 406 ).end();
-    }
-
-    Users.getUserByEmail(correo)
-    .then(results => {
-        console.log(results);
-        if(!results){
-            res.statusMessage = "No user was found with that email";
-            return res.status( 404 ).end();
+    const { sessiontoken } = req.headers;
+    jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+        if( err ){
+            res.statusMessage = "Session expired!";
+            return res.status( 400 ).end();
         }
-        else{
-            return res.status( 202 ).json(results);
+
+        let correo = req.params.correo;
+        console.log(correo);
+    
+        if(!correo){
+            res.statusMessage = "Please send the email";
+            return res.status( 406 ).end();
         }
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-        return res.status( 500 ).end();
-    })
+    
+        Users.getUserByEmail(correo)
+        .then(results => {
+            console.log(results);
+            if(!results){
+                res.statusMessage = "No user was found with that email";
+                return res.status( 404 ).end();
+            }
+            else{
+                return res.status( 202 ).json(results);
+            }
+        })
+        .catch( err => {
+            res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+        })
+    });
+    
 });
 
 // Ruta para crear un carrito
 router.post('/agregarCarrito', ( req, res ) =>{
-    let productos = req.body.productos;
-    let email = req.body.email;
-
-    let newCarrito = { productos, email };
-    let newProductos = productos;
-
-    Carritos
-    .getCarritoUser( email )
-    .then( results => {
-        if( results.length > 0){
-            Carritos
-            .addProductToCarrito( email, newProductos )
-            .then( carritoMod => {
-                return res.status( 201 ).json(carritoMod);
-            })
-            .catch( err => {
-                res.statusMessage =  "Somethong went wrong with the DB";
-                return res.status( 500 ).end();
-            })
+    const { sessiontoken } = req.headers;
+    jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+        if( err ){
+            res.statusMessage = "Session expired!";
+            return res.status( 400 ).end();
         }
-        else{
-            Carritos
-            .createNewCarrito( newCarrito )
-            .then( createdCarrito => {
-                return res.status( 201 ).json(createdCarrito);
-            })
-            .catch( err => {
-                res.statusMessage =  "Somethong went wrong with the DB";
-                return res.status( 500 ).end();
-            })
-        }
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-        return res.status( 500 ).end();
-    })
+
+        let productos = req.body.productos;
+        let email = req.body.email;
+    
+        let newCarrito = { productos, email };
+        let newProductos = productos;
+    
+        Carritos
+        .getCarritoUser( email )
+        .then( results => {
+            if( results.length > 0){
+                Carritos
+                .addProductToCarrito( email, newProductos )
+                .then( carritoMod => {
+                    return res.status( 201 ).json(carritoMod);
+                })
+                .catch( err => {
+                    res.statusMessage =  "Somethong went wrong with the DB";
+                    return res.status( 500 ).end();
+                })
+            }
+            else{
+                Carritos
+                .createNewCarrito( newCarrito )
+                .then( createdCarrito => {
+                    return res.status( 201 ).json(createdCarrito);
+                })
+                .catch( err => {
+                    res.statusMessage =  "Somethong went wrong with the DB";
+                    return res.status( 500 ).end();
+                })
+            }
+        })
+        .catch( err => {
+            res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+        })
+    });
+    
 });
 
 // Ruta que regresa el carrito de un usuario
 router.get('/carrito/:email', (req, res) => {
-    let email = req.params.email;
+    const { sessiontoken } = req.headers;
+    jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+        if( err ){
+            res.statusMessage = "Session expired!";
+            return res.status( 400 ).end();
+        }
 
+<<<<<<< HEAD
     Carritos
     .getCarritoUser( email )
     .then( results => {
@@ -286,46 +317,76 @@ router.get('/carrito/:email', (req, res) => {
         res.statusMessage =  "Something went wrong with the DB";
         return res.status( 500 ).end();
     })
+=======
+        let email = req.params.email;
+
+        Carritos
+        .getCarritoUser( email )
+        .then( results => {
+            return res.status( 200 ).json(results);
+        })
+        .catch( err => {
+            res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+        })
+    });
+>>>>>>> c87e2b1b910e99a54f05be39819c31e5c6ef5369
 })
 
 // Ruta para agregar un nuevo pedido 
 router.post('/addNewPedido', ( req, res ) => {
-    let name = req.body.name;
-    let email = req.body.email;
-    let direccion = req.body.direccion;
-    let productos = req.body.productos;
+    const { sessiontoken } = req.headers;
+    jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+        if( err ){
+            res.statusMessage = "Session expired!";
+            return res.status( 400 ).end();
+        }
 
-    console.log(direccion);
-
-    const newPedido = {
-        name,
-        email,
-        direccion,
-        productos
-    }
-    Pedidos.addNuevoPedido( newPedido )
-    .then( results => {
-        return res.status( 201 ).json(results);
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-        return res.status( 500 ).end();
-    })
+        let name = req.body.name;
+        let email = req.body.email;
+        let direccion = req.body.direccion;
+        let productos = req.body.productos;
+        
+        const newPedido = {
+            name,
+            email,
+            direccion,
+            productos
+        }
+        Pedidos.addNuevoPedido( newPedido )
+        .then( results => {
+            return res.status( 201 ).json(results);
+        })
+        .catch( err => {
+            res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+        })
+    });
+    
 });
 
 // Ruta que regresa los pedidos de un usuario
 router.get('/pedidosUsuario/:email', ( req, res ) => {
-    let email = req.params.email;
+    const { sessiontoken } = req.headers;
+    jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+        if( err ){
+            res.statusMessage = "Session expired!";
+            return res.status( 400 ).end();
+        }
 
-    Pedidos
-    .getPedidosByEmail( email )
-    .then( results =>{
-        return res.status( 200 ).json(results);
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-        return res.status( 500 ).end();
-    })
+        let email = req.params.email;
+
+        Pedidos
+        .getPedidosByEmail( email )
+        .then( results =>{
+            return res.status( 200 ).json(results);
+        })
+        .catch( err => {
+            res.statusMessage =  "Somethong went wrong with the DB";
+            return res.status( 500 ).end();
+        })
+    });
+    
 })
 
 // Ruta para eliminar un usuario
@@ -379,6 +440,7 @@ router.get( '/productos', ( req, res ) => {
     })
 });
 
+<<<<<<< HEAD
 //Ruta para ver todos los pedidos
 
 router.get( '/pedidos', ( req, res ) => {
@@ -392,4 +454,6 @@ router.get( '/pedidos', ( req, res ) => {
         return res.status( 500 ).end();
     })
 });
+=======
+>>>>>>> c87e2b1b910e99a54f05be39819c31e5c6ef5369
 module.exports = router;
