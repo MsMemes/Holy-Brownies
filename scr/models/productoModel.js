@@ -59,6 +59,16 @@ const Productos = {
         .catch( err => {
             return err;
         });
+    },
+    verProductos : function(){
+        return ProductoCollection
+        .find()
+        .then( todosLosProductos => {
+            return todosLosProductos;
+        })
+        .catch( err => {
+            return err;
+        });
     }
 };
 

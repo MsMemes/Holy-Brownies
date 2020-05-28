@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/adminClientes.css" rel="stylesheet" type="text/css" />
+    <title>Inventario</title>
+</head>
+<body>
+    
+    <header> 
+        <div class="logoBuscCarrito">
+           <div class="logo">
+            <img class ="logoImg" src ="../assets/LogoSinFondo.png" >
+            <p class="NombreNegocio"><a href="admin.html">HOLY BROWNIES </a></p>
+            </div>
+         
+      <!--  </div>-->
+        <div class ="top">
+            <ul class="topSection">
+                <li class="IniciarSesion"><a href="IniciarSesion.html">Cerrar sesión Admin</a></li> 
+            </ul>    
+        </div>
+    </div> 
+    </header>
+    <div class="container">
+        <form >
+          <div class="row">
+            <div class="col-25">
+              <p for="lname">Ingresa Correo del cliente</p>
+            </div>
+            <div class="col-75">
+              <input class="adminUserMail" type="text" id="lname">
+            </div>
+          </div>
+          <div class="row" id="btnsInv">
+            <a class = "btnDeleteUser" type="submit" value="Eliminar">Eliminar</a>
+            <a class = "btnGetCustomers" type="submit" value="Eliminar">Ver Clientes</a>
+          </div>
+        </form>
+      </div>
+      <div class ="results">
+
+      </div>
+        <script src="../js/adminClientes.js"></script>
+</body>
+</html>

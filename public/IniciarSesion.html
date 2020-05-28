@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/iniciarSesion.css" rel="stylesheet" type="text/css" />
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <header> <div class = "logo">
+                <img class ="logoImg" src ="../assets/LogoSinFondo.png" >
+                <a class = "title" href= "index.html">HOLY BROWNIES</a>
+            </div>
+    </header>
+            <div class="forms">
+                <form class="register-form">
+                <p> <input type="text" class="nombre" name="nombre" placeholder="Nombre"></p>
+                <p><input type="text" class="apellido" name="apellido" placeholder=" Apellido"></p>
+                <p> <input type="text" class="telefono" name="telefono" placeholder="Teléfono"></p>
+                <p> <input type="text" class="correo" name="correo" placeholder="Correo Electrónico"></p>
+                <p><input type="password" class="contraseña" name="contraseña" placeholder=" Contraseña"></p> 
+                <button class="registrar" href="#" type="submit">Registrarse </button>
+                <p class="mensaje">¿Ya te registraste?<a href="#">Iniciar sesión</a></p>
+                </form>
+               <form class="login-form">
+                   <p> <input type="text" class="usuario" name="nombreUsuario" placeholder="Correo"></p>
+                <p><input type="password" class="contraseñaLogin" name="contraseñaUsuario" placeholder=" Contraseña"></p> 
+                <button class="ingresar" href="#">Ingresar </button>
+                <p class="mensaje">¿Aún no te registras?<a href="#" >Registrarse</a></p>
+               </form>
+            </div>
+    <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+    <script src= "../js/registro.js"></script>
+</body>
+</html>

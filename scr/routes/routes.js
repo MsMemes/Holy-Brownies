@@ -77,7 +77,9 @@ router.post('/login', (req, res ) => {
                                     res.statusMessage = "Something went wrong with generating the token.";
                                     return res.status( 400 ).end();
                                 }
+                              
                                 return res.status( 200 ).json( { token } );
+
                             });
                         }
                         else{
@@ -98,6 +100,7 @@ router.post('/login', (req, res ) => {
             return res.status( 400 ).end();
         });
 });
+
 
 // Ruta del search bar
 router.get('/search/:producto', ( req, res ) => {
@@ -350,4 +353,29 @@ router.delete('/deleteUsuario/:correo', validate, ( req, res ) => {
     });
 })
 
+//Ruta para ver todos los usuarios
+router.get( '/clientes', ( req, res ) => {
+    Users
+    .verClientes()
+    .then( result => {
+        return res.status( 200).json( result );
+    })
+    .catch( err => {
+        res.statusMessage = "Something went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+});
+
+//Ruta para ver todos los productos
+router.get( '/productos', ( req, res ) => {
+    Productos
+    .verProductos()
+    .then( result => {
+        return res.status( 200).json( result );
+    })
+    .catch( err => {
+        res.statusMessage = "Something went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+});
 module.exports = router;
