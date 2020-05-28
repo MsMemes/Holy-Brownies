@@ -3,9 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const bcrypt = require ( 'bcryptjs' );
 const jsonwebtoken = require( 'jsonwebtoken' );
-// const { Brownies } = require('../models/browniesModel');
-// const { Pasteles } = require('../models/pastelModel');
-// const { Paquetes } = require('../models/paqueteModel');
+const { Carritos } = require('../models/carritoModel');
 const { Productos } = require('../models/productoModel');
 const { Users } = require( '../models/userModel' );
 const {SECRET_TOKEN} = require('../config'); 
@@ -204,154 +202,6 @@ router.patch('/modificarProducto/:name', validate, ( req, res ) => {
     })
 })
 
-// Ruta para agregar un pastel
-router.post('/addNewPastel', validate, ( req, res ) =>{
-    let name = req.body.name;
-    let precio = req.body.precio;
-
-    if(!name || !precio){
-        res.statusMessage = "Please send all the fields required";
-        return res.status( 406 ).end()
-    }
-
-    const newPastel = { name, precio };
-
-    console.log(newPastel);
-
-    Pasteles.addNewPastel( newPastel )
-    .then( results => {
-        return res.status( 201 ).json( results );
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-        return res.status( 500 ).end();
-    });
-})
-
-// Ruta para borrar un pastel
-router.delete('/borrarPastel/:name', validate, ( req, res ) =>{
-    let name = req.params.name;
-
-    if(!name){
-        res.statusMessage = "Please send the name of the cake you want to delete";
-        return res.status( 406 ).end();
-    }
-
-    Pasteles.deletePastel(name)
-    .then( result => {
-        if(result.deletedCount > 0){
-            return res.status( 200 ).end();
-        }
-        else{
-            res.statusMessage = "That cake was not found in the db";
-        return res.status( 404 ).end();
-        }
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-            return res.status( 500 ).end();
-    });
-});
-
-// Ruta para modificar el precio de un pastel
-router.patch('/modificarPastel/:pastel', validate, ( req, res ) => {
-    let name = req.params.pastel;
-    let newPrecio = req.body.precio;
-
-    if(!name || !newPrecio){
-        res.statusMessage = "Please send all the fields required";
-        return res.status( 406 ).end()
-    }
-
-    Pasteles.modificarPastel(name, newPrecio)
-    .then( results => {
-        if(results.nModified > 0){
-            return res.status( 202 ).end();
-        }
-        else{
-            res.statusMessage = "There is no cake with the name passed";
-        return res.status( 409 ).end();
-        }
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-            return res.status( 500 ).end();
-    })
-})
-
-// Ruta para agregar un paquete
-router.post('/addNewPaquete', validate, ( req, res ) =>{
-    let name = req.body.name;
-    let precio = req.body.precio;
-
-    if(!name || !precio){
-        res.statusMessage = "Please send all the fields required";
-        return res.status( 406 ).end()
-    }
-
-    const newPaquete = { name, precio };
-
-    Paquetes.addNewPaquete( newPaquete )
-    .then( results => {
-        return res.status( 201 ).json( results );
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-        return res.status( 500 ).end();
-    });
-});
-
-// Ruta para borrar un paquete
-router.delete('/borrarPaquete/:name', validate, ( req, res ) =>{
-    let name = req.params.name;
-
-    if(!name){
-        res.statusMessage = "Please send the name of the promo you want to delete";
-        return res.status( 406 ).end();
-    }
-
-    Paquetes.deletePaquete(name)
-    .then( result => {
-        if(result.deletedCount > 0){
-            return res.status( 200 ).end();
-        }
-        else{
-            res.statusMessage = "That promo was not found in the db";
-        return res.status( 404 ).end();
-        }
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-            return res.status( 500 ).end();
-    });
-});
-
-// Ruta para modificar el precio de un paquete
-router.patch('/modificarPaquete/:name', validate, ( req, res ) => {
-    let name = req.params.name;
-    let newPrecio = req.body.precio;
-
-    if(!name || !newPrecio){
-        res.statusMessage = "Please send all the fields required";
-        return res.status( 406 ).end()
-    }
-
-    Paquetes.modificarPaquete(name, newPrecio)
-    .then( results => {
-        if(results.nModified > 0){
-            return res.status( 202 ).end();
-        }
-        else{
-            res.statusMessage = "There is no promo with the name passed";
-        return res.status( 409 ).end();
-        }
-    })
-    .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
-            return res.status( 500 ).end();
-    })
-});
-
 // Ruta para regresar un usario por correo
 router.get('/perfil/:correo', ( req, res ) => {
     let correo = req.params.correo;
@@ -378,6 +228,61 @@ router.get('/perfil/:correo', ( req, res ) => {
         return res.status( 500 ).end();
     })
 });
+
+// Ruta para crear un carrito
+router.post('/agregarCarrito', ( req, res ) =>{
+    let productos = req.body.productos;
+    let email = req.body.email;
+
+    let newCarrito = { productos, email };
+    let newProductos = productos;
+
+    Carritos
+    .getCarritoUser( email )
+    .then( results => {
+        if( results.length > 0){
+            Carritos
+            .addProductToCarrito( email, newProductos )
+            .then( carritoMod => {
+                return res.status( 201 ).json(carritoMod);
+            })
+            .catch( err => {
+                res.statusMessage =  "Somethong went wrong with the DB";
+                return res.status( 500 ).end();
+            })
+        }
+        else{
+            Carritos
+            .createNewCarrito( newCarrito )
+            .then( createdCarrito => {
+                return res.status( 201 ).json(createdCarrito);
+            })
+            .catch( err => {
+                res.statusMessage =  "Somethong went wrong with the DB";
+                return res.status( 500 ).end();
+            })
+        }
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+});
+
+// Ruta que regresa el carrito de un usuario
+router.get('/carrito/:email', (req, res) => {
+    let email = req.params.email;
+
+    Carritos
+    .getCarritoUser( email )
+    .then( results => {
+        return res.status( 200 ).json(results);
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+})
 
 // Ruta para agregar un nuevo pedido 
 router.post('addNewPedido', ( req, res ) => {

@@ -1,7 +1,4 @@
 const mongoose = require( 'mongoose' );
-const { Brownies } = require('./browniesModel');
-const { Pasteles } = require('./pastelModel');
-const { Paquetes } = require('./paqueteModel');
 
 const carritoSchema = mongoose.Schema({
     productos : [{
@@ -22,10 +19,6 @@ const carritoSchema = mongoose.Schema({
             requiered : true
         }
     }],
-    status : {
-        type : String,
-        requiered : true
-    },
     email : {
         type : String,
         requiered : true
@@ -36,7 +29,7 @@ mongoose.pluralize(null);
 
 const carritosCollection = mongoose.model( 'Carrito', carritoSchema );
 
-const Carrito = {
+const Carritos = {
     createNewCarrito : function( newCarrito ){
         return carritosCollection
         .create( newCarrito )
@@ -57,9 +50,19 @@ const Carrito = {
             return err;
         })
     },
-    addProductToCarrito : function( newProducto ){
+    addProductToCarrito : function( email, newProducto ){
         return carritosCollection
         .updateOne({email : email}, { $push: {productos : newProducto}})
+        .then( results => {
+            return results;
+        })
+        .catch( err => {
+            return err;
+        })
+    },
+    getCarritoUser : function( email ){
+        return carritosCollection
+        .find({email : email})
         .then( results => {
             return results;
         })
@@ -69,4 +72,4 @@ const Carrito = {
     }
 };
 
-module.exports = { Pedidos }
+module.exports = { Carritos }

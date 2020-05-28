@@ -1,7 +1,7 @@
 const mongoose = require( 'mongoose' );
-const { Brownies } = require('./browniesModel');
-const { Pasteles } = require('./pastelModel');
-const { Paquetes } = require('./paqueteModel');
+// const { Brownies } = require('./browniesModel');
+// const { Pasteles } = require('./pastelModel');
+// const { Paquetes } = require('./paqueteModel');
 
 const direccionSchema = mongoose.Schema({
     dir : {
@@ -34,18 +34,6 @@ const pedidoSchema = mongoose.Schema({
     direccion : {
         type : direccionSchema,
         requiered : true
-    },
-    brownies : {
-        type : [Brownies],
-        requiered : false
-    },
-    pasteles : {
-        type : [Pasteles],
-        requiered : false
-    },
-    paquetes : {
-        type : [Paquetes],
-        requiered : false
     },
     precioTotal : {
         type : Number,
