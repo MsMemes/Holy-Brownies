@@ -101,7 +101,7 @@
     text-align: center;
     color: #ff5757;
   }
-  .btnDeleteUser:hover {
+  .btnDeleteUser:hover, .btnGetCustomers:hover {
     background-color: lightcoral;
   }
   

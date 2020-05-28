@@ -118,48 +118,45 @@ function modificarProducto(name, nuevoProducto) {
 }
 
 function watchDeleteUserForm(){
-let btnAgregar = document.getElementById('btnAgregar');
-btnAgregar.addEventListener('click', (event)=>{
-    let inputNombreProd = document.querySelector('.nombreProducto');
-    let inputPrecioProd = document.querySelector('.precioProducto');
-    let inputTipoProd = document.querySelector('.tipoProducto');
-    event.preventDefault();
-    agregarProducto(inputNombreProd.value, inputPrecioProd.value,inputTipoProd.value);
-    alert("Se agregó éxitosamente el producto");
-    console.log("clikc");
-    inputNombreProd.value = "";
-    inputPrecioProd.value="";
-    inputTipoProd.value="";
-});
-let btnEliminar = document.getElementById('btnEliminar');
-btnEliminar.addEventListener('click',(event)=>{
-    event.preventDefault();
-    let name = document.querySelector('.nombreProducto');
-    eliminarProducto(name.value);
-    alert("Se eliminó exitosamente el producto");
+	let btnAgregar = document.getElementById('btnAgregar');
+	btnAgregar.addEventListener('click', (event)=>{
+		let inputNombreProd = document.querySelector('.nombreProducto');
+		let inputPrecioProd = document.querySelector('.precioProducto');
+		let inputTipoProd = document.querySelector('.tipoProducto');
+		event.preventDefault();
+		agregarProducto(inputNombreProd.value, inputPrecioProd.value,inputTipoProd.value);
+		alert("Se agregó éxitosamente el producto");
+		console.log("clikc");
+		inputNombreProd.value = "";
+		inputPrecioProd.value="";
+		inputTipoProd.value="";
+	});
+	let btnEliminar = document.getElementById('btnEliminar');
+	btnEliminar.addEventListener('click',(event)=>{
+		event.preventDefault();
+		let name = document.querySelector('.nombreProducto');
+		eliminarProducto(name.value);
+		alert("Se eliminó exitosamente el producto");
 
-});
+	});
 
-let btnVerProductos = document.getElementById('btnVer');
-btnVerProductos.addEventListener('click',(event)=>{
-event.preventDefault();
-verProductos();
-});
+	let btnVerProductos = document.getElementById('btnVer');
+	btnVerProductos.addEventListener('click',(event)=>{
+		event.preventDefault();
+		verProductos();
+	});
+
     let btnModificarProductos = document.getElementById('btnModificar');
     btnModificarProductos.addEventListener('click',(event)=>{
-    event.preventDefault();
-    let name = document.querySelector('.nombreProducto');
-    let precioNuevo = document.querySelector('.precioProducto');
-
+    	event.preventDefault();
+    	let name = document.querySelector('.nombreProducto');
+    	let precioNuevo = document.querySelector('.precioProducto');
 		let nuevoProducto = {name};
-
 		if(precioNuevo){
 			nuevoProducto.precio = precioNuevo;
 		}
-
 		modificarProducto(name, nuevoProducto);
-});
-
+	});
 }
 
 

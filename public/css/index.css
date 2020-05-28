@@ -51,6 +51,7 @@ body{
   color: black;
   padding: 10px;
   list-style: none;
+  cursor: pointer;
 }
 .buscador li a:hover{
   background-color:#ff5757;
