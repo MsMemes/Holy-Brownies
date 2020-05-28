@@ -249,9 +249,7 @@ body{
 .btnAgregarPedido>li:hover{
   background-color: rgb(252, 122, 144);
 }
-.toppingInfo{
 
-}
 .cantidadInput{
   width: 15%;
   height: 30px;
