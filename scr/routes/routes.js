@@ -76,7 +76,9 @@ router.post('/login', (req, res ) => {
                                     res.statusMessage = "Something went wrong with generating the token.";
                                     return res.status( 400 ).end();
                                 }
+                              
                                 return res.status( 200 ).json( { token } );
+
                             });
                         }
                         else{
@@ -97,6 +99,7 @@ router.post('/login', (req, res ) => {
             return res.status( 400 ).end();
         });
 });
+
 
 // Ruta del search bar
 router.get('/search/:producto', ( req, res ) => {
