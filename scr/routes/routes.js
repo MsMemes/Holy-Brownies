@@ -104,11 +104,12 @@ router.post('/login', (req, res ) => {
 
 // Ruta del search bar
 router.get('/search/:producto', ( req, res ) => {
-    jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
-        if( err ){
-            res.statusMessage = "Session expired!";
-            return res.status( 400 ).end();
-        }
+    // const { sessiontoken } = req.headers;
+    // jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
+    //     if( err ){
+    //         res.statusMessage = "Session expired!";
+    //         return res.status( 400 ).end();
+    //     }
 
         let producto = req.params.producto;
         console.log(producto);
@@ -134,7 +135,7 @@ router.get('/search/:producto', ( req, res ) => {
             res.statusMessage = "Something went wrong with the DB";
             return res.status( 500 ).end();
         })
-    });
+    // });
 });
 
 // Ruta para guardar un nuevo producto
@@ -214,6 +215,7 @@ router.patch('/modificarProducto/:name', validate, ( req, res ) => {
 
 // Ruta para regresar un usario por correo
 router.get('/perfil/:correo', ( req, res ) => {
+    const { sessiontoken } = req.headers;
     jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
         if( err ){
             res.statusMessage = "Session expired!";
@@ -249,6 +251,7 @@ router.get('/perfil/:correo', ( req, res ) => {
 
 // Ruta para crear un carrito
 router.post('/agregarCarrito', ( req, res ) =>{
+    const { sessiontoken } = req.headers;
     jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
         if( err ){
             res.statusMessage = "Session expired!";
@@ -297,6 +300,7 @@ router.post('/agregarCarrito', ( req, res ) =>{
 
 // Ruta que regresa el carrito de un usuario
 router.get('/carrito/:email', (req, res) => {
+    const { sessiontoken } = req.headers;
     jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
         if( err ){
             res.statusMessage = "Session expired!";
@@ -319,6 +323,7 @@ router.get('/carrito/:email', (req, res) => {
 
 // Ruta para agregar un nuevo pedido 
 router.post('/addNewPedido', ( req, res ) => {
+    const { sessiontoken } = req.headers;
     jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
         if( err ){
             res.statusMessage = "Session expired!";
@@ -350,6 +355,7 @@ router.post('/addNewPedido', ( req, res ) => {
 
 // Ruta que regresa los pedidos de un usuario
 router.get('/pedidosUsuario/:email', ( req, res ) => {
+    const { sessiontoken } = req.headers;
     jsonwebtoken.verify( sessiontoken, SECRET_TOKEN, ( err, decoded ) => {
         if( err ){
             res.statusMessage = "Session expired!";
