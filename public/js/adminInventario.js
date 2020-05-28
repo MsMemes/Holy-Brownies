@@ -74,7 +74,7 @@ function verProductos() {
 			results.innerHTML = "";
 			for(let i = 0; i < responseJSON.length; i++){
 				results.innerHTML += `
-                <h1 class="title">Producto</h1> 
+                <h1 class="title">_______________________________________________________</h1> 
                 <div class="inventario">
                         <div>
                         ${responseJSON[i].name}
@@ -105,7 +105,7 @@ function modificarProducto(name, nuevoProducto) {
 		},
 		body : JSON.stringify( nuevoProducto )
 	}
-
+console.log(nuevoProducto);
 	fetch( urlApi, settings )
 	.then(response => {
 		if(response.ok){
@@ -150,12 +150,12 @@ function watchDeleteUserForm(){
     btnModificarProductos.addEventListener('click',(event)=>{
     	event.preventDefault();
     	let name = document.querySelector('.nombreProducto');
-    	let precioNuevo = document.querySelector('.precioProducto');
-		let nuevoProducto = {name};
-		if(precioNuevo){
-			nuevoProducto.precio = precioNuevo;
+    	let precio = document.querySelector('.precioProducto');
+		let nuevoProducto = {name:name.value};
+		if(precio.value){
+			nuevoProducto.precio = precio.value;
 		}
-		modificarProducto(name, nuevoProducto);
+		modificarProducto(nuevoProducto.name, nuevoProducto);
 	});
 }
 

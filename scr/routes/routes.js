@@ -283,7 +283,7 @@ router.get('/carrito/:email', (req, res) => {
         return res.status( 200 ).json(results);
     })
     .catch( err => {
-        res.statusMessage =  "Somethong went wrong with the DB";
+        res.statusMessage =  "Something went wrong with the DB";
         return res.status( 500 ).end();
     })
 })
@@ -370,6 +370,20 @@ router.get( '/clientes', ( req, res ) => {
 router.get( '/productos', ( req, res ) => {
     Productos
     .verProductos()
+    .then( result => {
+        return res.status( 200).json( result );
+    })
+    .catch( err => {
+        res.statusMessage = "Something went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+});
+
+//Ruta para ver todos los pedidos
+
+router.get( '/pedidos', ( req, res ) => {
+    Pedidos
+    .verPedidos()
     .then( result => {
         return res.status( 200).json( result );
     })

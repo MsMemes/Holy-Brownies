@@ -1,18 +1,18 @@
-$(document).ready(function(){
-    $('#datePicker').kendoDatePicker({
-    disableDates: [new Date(2018, 11, 24), new Date(2018, 11, 25)]
-    });
-  });
-  $(document).ready(function(){
-    
-$('#timePicker').kendoTimePicker();
-new Date(year, month, day, hours, minutes, seconds, milliseconds)
-});
 
+/*
 let btnFinalizarCompra = document.querySelector('.btnFinalizarCompra')
 
 btnFinalizarCompra.addEventListener('click',(event)=>{
     event.preventDefault();
+    let name = document.getElementById('nombre');
+    let email = document.getElementById('email');
+    let direccion = document.getElementById('direccion');
+    let estado = document.getElementById('estado');
+    let ciudad = document.getElementById('ciudad');
+    let codigoPostal = document.getElementById('zip');
+    let pedidoProductos 
+    let productos = document.getElementById();
     alert("PEDIDO EXITOSO");
-    window.location = "usuarioPerfil.html";
-});
+    agregarPedido();
+    
+});*/

@@ -121,11 +121,15 @@
   }
   .inventario{
     display: flex;
-  flex-direction: column;
+  /*flex-direction: column;*/
+  text-align: left;
   justify-content: space-around;
   font-weight: lighter;
   text-align: center;
   margin: 10px;
+  }
+  .inventario div{
+    width: 33%;
   }
   .title{
     text-align: center;

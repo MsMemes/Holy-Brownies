@@ -88,14 +88,18 @@
     cursor: pointer;
     float: right;
   }
+  
   .cliente{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-weight: lighter;
-    text-align: center;
-    margin: 10px;
-  
+  /*flex-direction: column;*/
+  text-align: left;
+  justify-content: space-around;
+  font-weight: lighter;
+  text-align: center;
+  margin: 10px;
+  }
+  .cliente div{
+    width: 33%;
   }
   .title{
     text-align: center;
@@ -177,6 +181,14 @@
           }
           #btnsInv{
            margin-top: 15px;
+        }
+        .cliente{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          font-weight: lighter;
+          align-items: center;
+          margin: 10px;
         }
       }
    

@@ -234,8 +234,8 @@ body{
 }
 .btnAgregarPedido li{
   cursor: pointer;
-  margin-top: 40px;
-  margin-bottom: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 16px;
   height: 45px;
   width: 250px;
@@ -248,6 +248,9 @@ body{
 }
 .btnAgregarPedido>li:hover{
   background-color: rgb(252, 122, 144);
+}
+.toppingInfo{
+
 }
 .cantidadInput{
   width: 15%;
@@ -446,7 +449,7 @@ footer{
         display: flex;
       }
       .brownieMenu2nd>li>p{
-       border: 2px solid black;
+       
        margin-left: 10px;
        margin-top: 30px;
        margin-bottom: 100px;
@@ -464,7 +467,7 @@ footer{
         display: flex;
       }
       .brownieMenu3rd>li>p{
-       border: 2px solid black;
+      
        margin-left: 10px;
        margin-top: 30px;
        margin-bottom: 100px;
@@ -472,6 +475,18 @@ footer{
       footer{
         display: block;
       }
+      .btnAgregarPedido{
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+          width: 100px;
+          justify-content: center;
+          text-align:  center;
+      }
+    .btnAgregarPedido li{
+      justify-content: center;
+    }
     }
  
   @keyframes menuLinkFade{
@@ -685,8 +700,9 @@ footer{
 }
 
 .btnAgregarPedido{
-  display: flex;
-  justify-content: space-around;
+  margin-left: 30px;
+    width: 140px;
+    text-align:  center;
 }
 .btnAgregarPedido li{
   cursor: pointer;
@@ -700,6 +716,7 @@ footer{
   line-height: 45px;
   background-color:#ff5757;
   border-radius: 5px;
+  text-align: center;
   color: white;
 }
 .btnAgregarPedido>li:hover{

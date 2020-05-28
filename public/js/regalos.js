@@ -2,11 +2,11 @@ console.log("running");
 
 let carts = document.querySelectorAll('.add-cart');
 let regalos = [
-   {productoNombre: 'Caja 12 brownies Surtidos', tag: 'caja12surtidos', precio: 180,inCart: 0},
-    {productoNombre: 'Pizza Brownie', tag: 'pizzabrownie', precio: 200,inCart: 0},
-    {productoNombre: 'Caja 6 brownies surtidos', tag: 'caja6surtidos', precio: 80,inCart: 0},
-    {productoNombre: 'Para ti', tag: 'parati', precio: 110,inCart: 0},
-    {productoNombre: 'I love Dad', tag: 'ilovedad', precio: 110,inCart: 0}
+   {name: 'Caja 12 brownies Surtidos', tag: 'caja12surtidos', precioInd: 180,cantidad: 0, precioTotal: 0},
+    {name: 'Pizza Brownie', tag: 'pizzabrownie', precioInd: 200,cantidad: 0, precioTotal: 0},
+    {name: 'Caja 6 brownies surtidos', tag: 'caja6surtidos', precioInd: 80,cantidad: 0, precioTotal: 0},
+    {name: 'Para ti', tag: 'parati', precioInd: 110,cantidad: 0, precioTotal: 0},
+    {name: 'I love Dad', tag: 'ilovedad', precioInd: 110,cantidad: 0, precioTotal: 0}
 ]
 for(let i = 0; i<carts.length;i++){
     carts[i].addEventListener('click', (event)=>{
@@ -45,9 +45,9 @@ function setItems(product){
                 [product.tag]:product
             }
         }
-        cartItems[product.tag].inCart +=1;
+        cartItems[product.tag].cantidad +=1;
     }else{
-        product.inCart = 1;
+        product.cantidad = 1;
         cartItems = {
             [product.tag]:product
         }
@@ -59,9 +59,9 @@ function totalCost(product){
     let cartCost = localStorage.getItem('totalCost');
     if(cartCost != null){
         cartCost = parseInt(cartCost);
-        localStorage.setItem("totalCost", cartCost + product.precio);
+        localStorage.setItem("totalCost", cartCost + product.precioInd);
     }else{
-        localStorage.setItem("totalCost", product.precio);
+        localStorage.setItem("totalCost", product.precioInd);
     }
     
 }

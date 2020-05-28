@@ -48,7 +48,7 @@ function getAllCustomers() {
 			results.innerHTML = "";
 			for(let i = 0; i < responseJSON.length; i++){
 				results.innerHTML += `
-                <h1 class="title">Cliente</h1> 
+                <h1 class="title">_______________________________________________________</h1> 
                 <div class="cliente">
                         <div>
                         ${responseJSON[i].firstName}

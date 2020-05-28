@@ -32,14 +32,18 @@ const pedidoSchema = mongoose.Schema({
             type : String,
             requiered : true
         },
-        cantidad : {
-            type : Number,
-            requiered : true
-        }, 
+        tag : {
+            type: String,
+            requiered :true
+        },
         precioInd : {
             type : Number,
             requiered : true
         },
+        cantidad : {
+            type : Number,
+            requiered : true
+        }, 
         precioTotal : {
             type : Number,
             requiered : true
@@ -75,6 +79,16 @@ const Pedidos = {
         .catch( err => {
             return err;
         })
+    },
+    verPedidos : function(){
+        return pedidosCollection
+        .find()
+        .then( todosLosPedidos => {
+            return todosLosPedidos;
+        })
+        .catch( err => {
+            return err;
+        });
     }
 };
 

@@ -114,8 +114,18 @@
     display: table;
     clear: both;
   }
-  .btnInventario{
-      margin: 10px;
+  .btnPedido {
+    background-color:#ff5757 ;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .btnPedido:hover {
+    background-color: lightcoral;
   }
 
   @media (max-width: 599px){
