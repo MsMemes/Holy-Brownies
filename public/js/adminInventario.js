@@ -93,6 +93,29 @@ function verProductos() {
 			results.innerHTML = err.message;
 		});
 }
+//ARREGLAR
+function modificarProducto(name, nuevoProducto) {
+	let urlApi = `/modificarProducto/${name}`;
+
+	let settings = {
+		method : 'PATCH',
+		headers : {
+			Authorization : `Bearer ${API_TOKEN}`,
+			'Content-Type' : 'application/json'
+		},
+		body : JSON.stringify( nuevoProducto )
+	}
+
+	fetch( urlApi, settings )
+	.then(response => {
+		if(response.ok){
+			return response.json();
+		}
+		else{
+			throw new Error (response.statusText);
+		}
+	})
+}
 
 function watchDeleteUserForm(){
 let btnAgregar = document.getElementById('btnAgregar');
@@ -104,9 +127,9 @@ btnAgregar.addEventListener('click', (event)=>{
     agregarProducto(inputNombreProd.value, inputPrecioProd.value,inputTipoProd.value);
     alert("Se agregó éxitosamente el producto");
     console.log("clikc");
-    inputNombreProd ="";
-    inputPrecioProd="";
-    inputTipoProd="";
+    inputNombreProd.value = "";
+    inputPrecioProd.value="";
+    inputTipoProd.value="";
 });
 let btnEliminar = document.getElementById('btnEliminar');
 btnEliminar.addEventListener('click',(event)=>{
@@ -122,10 +145,28 @@ btnVerProductos.addEventListener('click',(event)=>{
 event.preventDefault();
 verProductos();
 });
+    let btnModificarProductos = document.getElementById('btnModificar');
+    btnModificarProductos.addEventListener('click',(event)=>{
+    event.preventDefault();
+    let name = document.querySelector('.nombreProducto');
+    let precioNuevo = document.querySelector('.precioProducto');
+
+		let nuevoProducto = {name};
+
+		if(precioNuevo){
+			nuevoProducto.precio = precioNuevo;
+		}
+
+		modificarProducto(name, nuevoProducto);
+});
+
 }
+
+
 
 function init(){
 watchDeleteUserForm();
+
 }
 
 init();
