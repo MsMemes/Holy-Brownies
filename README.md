@@ -137,6 +137,12 @@ Ejemplos de datos requeridos:
 URL : /productos
 ```
 ```
+'/pedidos' (GET)
+Regresa todos los pedidos en la BD
+Ejemplos de datos requeridos:
+URL : /pedidos
+```
+```
 '/addNewPedido'
 Registra un pedido hecho por un usuario en la base de datos
 Ejemplos de datos requeridos:
