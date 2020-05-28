@@ -1,0 +1,305 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box; 
+  }
+  /*MENU*/
+  body{
+    font-family: verdana;
+    font-weight: bold;
+  }
+  .logoBuscCarrito{
+    height: 100px;
+    background: #f8dd71;
+    font-family: verdana;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    padding: 5px;
+  }
+  .logo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo p a{
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    margin: -30px;
+    margin-top: 40px;
+  }
+  .topSection{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+  }
+  .topSection li a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .IniciarSesion{
+    margin-right: 10px;
+  }
+  .IniciarSesion>a:hover{
+    color: white;
+    transition: background-color 1s;
+  }
+  #carritoImg{
+    width: 25px;
+    height:25px;
+  }
+  .logoImg{
+    width: 80px;
+    height: 80px;
+  }
+  .itemNumber{
+    background-color: #ff5757;
+    border-radius: 5px;
+    padding: 2px;
+    color: white;
+  }
+  .itemNumberCart{
+    margin-left: -5px;
+    margin-top: -8px;
+  }
+  
+  /*NEWWWWWWWWWWWWWW*/
+  .mainContainer{
+    background-color: lightcoral;
+    display: flex;
+    justify-content: space-around;
+    line-height: 60px;
+  }
+  .mainContainer a{
+      cursor: pointer;
+      /*border: 1px solid black;*/
+      padding: 10px;
+      color: white;
+      font-size: 20px;
+  }
+ .mainContainer a:hover{
+    color:rgb(0, 0, 0);
+     transition: color 1s;
+ }
+ .container{
+    display: flex;
+   margin-top: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.miPerfilForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.column1{
+padding: 20px;
+margin-bottom: -20px;
+}
+.column1 p{
+    margin: 10px;
+}
+.column1 input{
+    margin: 10px;
+    width: 350px;
+}
+.column2{
+    padding: 20px;
+}
+.column2 p{
+    margin:10px;
+}
+.column2 input{
+    margin: 10px;
+    width: 350px;
+}
+
+ input {
+   vertical-align: middle;
+   margin: 5px 10px 5px 0;
+   padding: 10px;
+   background-color: #fff;
+   border: 1px solid #ddd;
+ }
+ 
+ .btnGuardarPerfil {
+     margin-top: 20px;
+   padding: 15px 35px;
+   background-color:lightcoral;
+   border:none;
+   border-radius: 40px;
+   color: white;
+   cursor: pointer;
+   margin-bottom: 25px;
+   font-family: Verdana;
+   font-weight: bold;
+   font-size: 15px;
+ }
+ 
+
+ .btnGuardarPerfil:hover {
+   background-color: rgb(247, 95, 95);
+   transition:  background-color 1s;
+ }
+ .formDirecciones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+ }
+ .direccionesForm{
+   display: none;
+ }
+ .resultadosPedidos{
+   display: none;
+ }
+ .formPerfil{
+    display: none;
+}
+.pagosForm{
+  display: none;
+}
+
+  
+  @media (max-width: 599px){
+    .logoBuscCarrito{
+          height: 130px;
+  
+      }
+      
+      .logo{
+          margin-left: 100px;
+          margin-top :-40px;
+      }
+      .logo p a{
+          text-decoration: none;
+          font-size: 18px;
+          color: white;
+          padding: 10px;
+          margin: -30px;
+          margin-top: 40px;
+      }
+     
+      .menu-active{
+          transform: translateX(0%);
+          transform: translateY(10%);
+      }
+      .menu li{
+          opacity: 0;
+         
+      }
+      
+      .logoImg{
+          margin-left: 10px;
+          width: 55px;
+          height: 55px;
+      }
+        #carritoImg{ 
+            margin-top:-25px ;
+            width: 25px;
+            height:25px;
+          }
+          .IniciarSesion{
+              display: none;
+          }
+          
+          .top{
+              margin-top: 0px;
+              margin-right: 20px;
+          }
+          .itemNumberCart{
+            margin-left: -5px;
+            margin-top: -17px;
+  
+          }
+          .menuLogin{
+            display: block;
+        }
+        .direccionesForm{
+          display: none;
+        }
+        .resultadosPedidos{
+          display: none;
+        }
+        .formPerfil{
+           display: none;
+       }
+       .pagosForm{
+         display: none;
+       }
+      }
+      .direccionesForm{
+   display: none;
+ }
+ .resultadosPedidos{
+   display: none;
+ }
+ .formPerfil{
+    display: none;
+}
+.pagosForm{
+  display: none;
+}
+    @media (min-width: 600px) and (max-width: 900px){
+        body{
+            overflow-x: hidden;
+        }
+        .logoBuscCarrito{
+            height: 130px;
+  
+        }
+        .logo{
+            margin-left: 100px;
+            margin-top :-40px;
+        }
+        .logo p a{
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            padding: 10px;
+            margin: -30px;
+            margin-top: 40px;
+        }
+        
+        .logoImg{
+            margin-left: 10px;
+            width: 60px;
+            height: 60px;
+        }
+        #carritoImg{ 
+            margin-top:-20px ;
+            width: 25px;
+            height:25px;
+          }
+          .IniciarSesion{
+              display: none;
+          }
+          .itemNumberCart{
+            margin-left: -5px;
+            margin-top: -17px;
+          }
+          .top{
+              margin-top: 0px;
+          }
+          .menuLogin{
+            display: block;
+        }
+        .direccionesForm{
+          display: none;
+        }
+        .resultadosPedidos{
+          display: none;
+        }
+        .formPerfil{
+           display: none;
+       }
+       .pagosForm{
+         display: none;
+       }
+    }

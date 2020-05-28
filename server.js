@@ -9,7 +9,7 @@ const jsonParser = bodyParser.json();
 
 // Init
 const app = express();
-app.use( express.static( "public" ) );
+app.use(express.static("public"));
 
 // Middlewares
 app.use(morgan('dev'));

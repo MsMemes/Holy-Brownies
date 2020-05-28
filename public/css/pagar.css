@@ -1,0 +1,363 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box; 
+  }
+  /*MENU*/
+  body{
+    font-family: verdana;
+    font-weight: bold;
+    
+  }
+  .logoBuscCarrito{
+    height: 100px;
+    background: #f8dd71;
+    font-family: verdana;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    padding: 5px;
+  }
+  .logo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo p a{
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    margin: -30px;
+    margin-top: 40px;
+  }
+  .buscador{
+    display: flex;  
+    justify-content: space-around;
+  }
+  .barraBuscadora{
+    border-radius: 10px;
+    width: 380px;
+    height: 35px;
+    border: none;
+  }
+  .buscador ul li{
+    list-style: none;
+    margin-top: 7px;
+    margin-left: 5px;
+  }
+  .buscador ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    list-style: none;
+  }
+  .buscador li a:hover{
+    background-color:#ff5757;
+    color: white;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .menu{
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    /*width: 50%;*/
+    list-style: none;
+  
+  }
+  .menu li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+  }
+  .menu li a:hover{
+    background-color:#ff5757;
+    color: white;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .topSection{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+  }
+  .topSection li a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .itemNumber{
+    background-color: #ff5757;
+    border-radius: 5px;
+    padding: 2px;
+    color: white;
+  }
+  .itemNumberCart{
+    margin-left: -5px;
+    margin-top: -8px;
+  }
+  .IniciarSesion{
+    margin-right: 10px;
+  }
+  .IniciarSesion>a:hover{
+    color: white;
+    transition: background-color 1s;
+  }
+  #carritoImg{
+    width: 25px;
+    height:25px;
+  }
+  .logoImg{
+    width: 80px;
+    height: 80px;
+  }
+  .burger{
+    display: none;
+    cursor: pointer;
+  }
+  .burger div{
+    width: 25px;
+    height: 5px;
+    background-color:#ff5757;
+    margin: 5px;
+  }
+  .menuLogin{
+    display: none;
+  }
+
+  /*--------------------CARRITO--------------------*/
+  .products-header{
+    border: 2px solid li;
+      width: 100%;
+      max-width: 650px;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 4px solid lightcoral;
+      margin: 0 auto;
+  }
+  .products-container{
+      display: flex;
+      justify-content: center;
+      max-width: 650px;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 0 auto;
+      margin-top:80px;
+      /*border: 2px solid black;*/
+  }
+.item{
+  display: flex;
+  justify-content: space-around;
+  /*border: 2px solid black;*/
+  width: 600px;
+  margin-bottom: 20px;
+}
+.cantidadItem{
+  width: 100px;
+  text-align: center;
+  /*border: 2px solid black;*/
+  margin-right: 180px;
+  font-size: 18px;
+  margin-bottom: 90px;
+}
+.precioItem{
+  margin-right: 20px;
+}
+  .tituloPedido{
+    width: 45%;
+    text-align: center;
+  }
+ 
+  .precio{
+    width: 15%;
+    display: flex;
+    align-items: center;
+  }
+  .cantidad{
+    width: 30%;
+    display: flex;
+    align-items: center;
+  }
+   .total{
+    width: 10%;
+    display: flex;
+    align-items: center;
+  }
+  .productos{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+    border-bottom: 1px, solid lightcoral;
+ 
+  }
+  .producto{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;margin-left: 20px;
+  }
+  .producto img{
+      width: 120px;
+      height: 120px;
+      
+  }
+  .totalCost{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      padding: 10px 0;
+  }
+  .totalTitle{
+    width: 30%;
+  }
+  .total{
+    width: 10%;
+  }
+ #pagarContainer{
+     margin-left: 20px;
+     margin-right: 20px;
+     margin-bottom: 20px;
+ }
+ .date{
+     margin-left: 20px;
+ }
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  
+  .col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+  }
+  
+  .col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+  }
+  
+  .col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+  
+  .container {
+    background-color: rgb(235, 106, 106);
+    padding: 3px 18px 13px 18px;
+    color: white;
+  }
+  
+  input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+  
+  .btnFinalizarCompra {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+  }
+  
+  .btnFinalizarCompra:hover {
+    background-color: lightgray;
+  }
+  
+  
+  hr {
+    border: 1px solid lightgrey;
+  }
+  
+  span.price {
+    float: right;
+    color: grey;
+  }
+  .products-container{
+          
+    max-width: 650px;
+}
+.item{
+ display: flex;
+ justify-content: space-around;
+ width: 650px;
+ margin-bottom: 20px;
+}
+
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 599px){
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+    .products-container{
+          
+      max-width: 450px;
+  }
+  .item{
+   display: flex;
+   justify-content: space-around;
+   width: 450px;
+   margin-bottom: 20px;
+  }
+  }
+
+  @media (min-width: 600px) and (max-width: 900px){
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+    .products-container{
+          
+      max-width: 550px;
+  }
+  .item{
+   display: flex;
+   justify-content: space-around;
+   width: 550px;
+   margin-bottom: 20px;
+  }
+  }

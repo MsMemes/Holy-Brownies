@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/adminInventario.css" rel="stylesheet" type="text/css" />
+    <title>Inventario</title>
+</head>
+<body>
+    
+    <header> 
+        <div class="logoBuscCarrito">
+           <div class="logo">
+            <img class ="logoImg" src ="../assets/LogoSinFondo.png" >
+            <p class="NombreNegocio"><a href="admin.html">HOLY BROWNIES </a></p>
+            </div>
+         
+      <!--  </div>-->
+        <div class ="top">
+            <ul class="topSection">
+                <li class="IniciarSesion"><a href="IniciarSesion.html">Cerrar sesión Admin</a></li> 
+            </ul>    
+        </div>
+    </div> 
+    </header>
+    <div class="container">
+        <form >
+          <div class="row">
+            <div class="col-25">
+              <label for="lname">Nombre del producto</label>
+            </div>
+            <div class="col-75">
+              <input type="text" class="nombreProducto">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="lname">Precio</label>
+            </div>
+            <div class="col-75">
+              <input type="text" class="precioProducto">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="lname">Tipo</label>
+            </div>
+            <div class="col-75">
+              <input type="text" class="tipoProducto">
+            </div>
+          </div>
+          <div class="row" id="btnsInv">
+            <a class = "btnInventario" id="btnEliminar"  >Eliminar</a>
+             <a class = "btnInventario" id="btnModificar">Modificar</a>
+            <a class = "btnInventario"  id="btnAgregar">Agregar</a>
+            <a class = "btnInventario"  id="btnVer">Ver</a>
+          </div>
+        </form>
+      </div>
+      <div class ="results">
+      
+      </div>
+        <script src="../js/adminInventario.js"></script>
+</body>
+</html>

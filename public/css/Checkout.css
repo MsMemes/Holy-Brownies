@@ -1,0 +1,243 @@
+/*MENU*/
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box; 
+  }
+body{
+    font-family: verdana;
+    font-weight: bold;
+  }
+  .logoBuscCarrito{
+    height: 100px;
+    background: #f8dd71;
+    font-family: verdana;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    padding: 5px;
+  }
+  .logo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo p a{
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    margin: -30px;
+    margin-top: 40px;
+  }
+  .buscador{
+    display: flex;  
+    justify-content: space-around;
+  }
+  .barraBuscadora{
+    border-radius: 10px;
+    width: 380px;
+    height: 35px;
+    border: none;
+  }
+  .buscador ul li{
+    list-style: none;
+    margin-top: 7px;
+    margin-left: 5px;
+  }
+  .buscador ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    list-style: none;
+  }
+  .buscador li a:hover{
+    background-color:#ff5757;
+    color: white;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .menu{
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    /*width: 50%;*/
+    list-style: none;
+  
+  }
+  .menu li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+  }
+  .menu li a:hover{
+    background-color:#ff5757;
+    color: white;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .topSection{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+  }
+  .topSection li a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .IniciarSesion{
+    margin-right: 10px;
+  }
+  .IniciarSesion>a:hover{
+    color: white;
+    transition: background-color 1s;
+  }
+  #carritoImg{
+    width: 25px;
+    height:25px;
+  }
+  .logoImg{
+    width: 80px;
+    height: 80px;
+  }
+  .burger{
+    display: none;
+    cursor: pointer;
+  }
+  .burger div{
+    width: 25px;
+    height: 5px;
+    background-color:#e46274;
+    margin: 5px;
+  }
+  .menuLogin{
+    display: none;
+  }
+
+
+/*________________________________________________________*/
+
+  
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 5 -16px;
+  }
+  
+  .col-25 {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+  }
+  
+  .col-50 {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+  }
+  
+  .col-75 {
+    -ms-flex: 65%; /* IE10 */
+    flex: 65%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+  
+  .container {
+    background-color: lightcoral;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    color: white;
+  }
+  
+  .checkoutInputs {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+  
+  .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  a {
+    color: #2196F3;
+  }
+  
+  hr {
+    border: 1px solid lightgrey;
+  }
+  
+  span.price {
+    float: right;
+    color: grey;
+  }
+  .itemNumber{
+    background-color: #ff5757;
+    border-radius: 5px;
+    padding: 2px;
+    color: white;
+  }
+  .itemNumberCart{
+    margin-left: -5px;
+    margin-top: -8px;
+  }
+  footer{
+    margin-top: 30px;
+    height: 60px;
+    background-color: rgb(216, 187, 59);
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  /*@media (max-width: 599px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  }*/
+  @media (min-width: 600px) and (max-width: 900px){
+    .row {
+        flex-direction: column-reverse;
+      }
+      .col-25 {
+        margin-bottom: 20px;
+      }
+  }

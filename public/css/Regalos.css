@@ -1,0 +1,372 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box; 
+  }
+  /*MENU*/
+  body{
+    font-family: verdana;
+    font-weight: bold;
+  }
+  .logoBuscCarrito{
+    height: 100px;
+    background: #f8dd71;
+    font-family: verdana;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    padding: 5px;
+  }
+  .logo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logo p a{
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    margin: -30px;
+    margin-top: 40px;
+  }
+  .buscador{
+    display: flex;  
+    justify-content: space-around;
+  }
+  .barraBuscadora{
+    border-radius: 10px;
+    width: 380px;
+    height: 35px;
+    border: none;
+  }
+  .buscador ul li{
+    list-style: none;
+    margin-top: 7px;
+    margin-left: 5px;
+  }
+  .buscador ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    list-style: none;
+  }
+  .buscador li a:hover{
+    background-color:#ff5757;
+    color: white;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .menu{
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    /*width: 50%;*/
+    list-style: none;
+  
+  }
+  .menu li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+  }
+  .menu li a:hover{
+    background-color:#ff5757;
+    color: white;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .topSection{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+  }
+  .topSection li a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .IniciarSesion{
+    margin-right: 10px;
+  }
+  .IniciarSesion>a:hover{
+    color: white;
+    transition: background-color 1s;
+  }
+  #carritoImg{
+    width: 25px;
+    height:25px;
+  }
+  .logoImg{
+    width: 80px;
+    height: 80px;
+  }
+  .burger{
+    display: none;
+    cursor: pointer;
+  }
+  .burger div{
+    width: 25px;
+    height: 5px;
+    background-color:#e46274;
+    margin: 5px;
+  }
+  .menuLogin{
+    display: none;
+  }
+  /*------------------------------FOOTER------------------------------*/
+  footer{
+    background-color: #ff5757;
+    line-height: 80px;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .suscribir{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  .barraSuscribir{
+    border-radius: 10px;
+    width: 380px;
+    height: 35px;
+    border: none;
+    margin-top: 25px;
+  }
+  .suscribir ul li{
+    list-style: none;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
+  .suscribir ul li a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    list-style: none;
+  }
+  .suscribir li a:hover{
+    background-color:#f8dd71;
+    color: black;
+    transition: background-color 1s;
+    border-radius: 10px;
+  }
+  .infoContacto{
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 17px;
+  }
+  
+  @media (max-width: 599px){
+    .logoBuscCarrito{
+        /*  display: flex;
+          justify-content: space-around;*/
+         /* justify-content: space-around;*/
+          height: 130px;
+  
+      }
+      .barraBuscadora{
+          border-radius: 10px;
+          width: 300px;
+          height: 25px;
+          border: none;
+      }
+      .buscador{
+          margin-top: 80px;
+          margin-left: -340px;
+          margin-right: -50px;
+      }
+      .buscador ul li{
+          font-size: 15px;
+      }
+      .buscador ul li{
+          margin-top: 2px;
+      }
+      .logo{
+          margin-left: 100px;
+          margin-top :-40px;
+      }
+      .logo p a{
+          text-decoration: none;
+          font-size: 18px;
+          color: white;
+          padding: 10px;
+          margin: -30px;
+          margin-top: 40px;
+      }
+      .menu{
+          position: absolute;
+          left: 0px;
+          font-size: 14px;
+          height: 92vh;
+          top: 8.5vh;
+          background-color:#f8dd71 ;
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          align-items: center;
+          width: 50%;
+          transform: translateX(-100%);
+          transition: transform 0.5s ease-in;
+      }
+      .menu-active{
+          transform: translateX(0%);
+          transform: translateY(10%);
+      }
+      .menu li{
+          opacity: 0;
+         
+      }
+      .burger{
+          display: block;
+          margin-top: -20px;
+          margin-right: -60px;
+      }
+      .logoImg{
+          margin-left: 10px;
+          width: 55px;
+          height: 55px;
+      }
+        #carritoImg{ 
+            margin-top:-25px ;
+            width: 25px;
+            height:25px;
+          }
+          .IniciarSesion{
+              display: none;
+          }
+          .top{
+              margin-top: 0px;
+              margin-right: 20px;
+          }
+          .menuLogin{
+            display: block;
+        }
+        footer{
+          display: block;
+        }
+        footer{
+          display: block;
+        }
+  
+      }
+   
+    @keyframes menuLinkFade{
+        from{
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    @media (min-width: 600px) and (max-width: 900px){
+        body{
+            overflow-x: hidden;
+        }
+        .logoBuscCarrito{
+          /*  display: flex;
+            justify-content: space-around;*/
+           /* justify-content: space-around;*/
+            height: 130px;
+  
+        }
+        .barraBuscadora{
+            border-radius: 10px;
+            width: 350px;
+            height: 30px;
+            border: none;
+        }
+        .buscador{
+            margin-top: 80px;
+            margin-left: -400px;
+            margin-right: -50px;
+        }
+        .buscador ul li{
+            font-size: 15px;
+        }
+        .buscador ul li{
+            margin-top: 2px;
+        }
+        .logo{
+            margin-left: 100px;
+            margin-top :-40px;
+        }
+        .logo p a{
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            padding: 10px;
+            margin: -30px;
+            margin-top: 40px;
+        }
+        .menu{
+            position: absolute;
+            left: 0px;
+            font-size: 14px;
+            height: 92vh;
+            top: 8.5vh;
+            background-color:#f8dd71 ;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            transform: translateX(-100%);
+            transition: transform 0.5s ease-in;
+        }
+        .menu-active{
+            transform: translateX(0%);
+            transform: translateY(10%);
+        }
+        .menu li{
+            opacity: 0;
+           
+        }
+        .burger{
+            display: block;
+            margin-top: -10px;
+            margin-right: -60px;
+        }
+        .logoImg{
+            margin-left: 10px;
+            width: 60px;
+            height: 60px;
+        }
+        #carritoImg{ 
+            margin-top:-20px ;
+            width: 25px;
+            height:25px;
+          }
+          .IniciarSesion{
+              display: none;
+          }
+          .top{
+              margin-top: 0px;
+          }
+          .menuLogin{
+            display: block;
+        }
+        footer{
+          display: block;
+        }
+        }
+        @keyframes menuLinkFade{
+            from{
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to{
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
