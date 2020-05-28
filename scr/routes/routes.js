@@ -6,6 +6,7 @@ const jsonwebtoken = require( 'jsonwebtoken' );
 const { Carritos } = require('../models/carritoModel');
 const { Productos } = require('../models/productoModel');
 const { Users } = require( '../models/userModel' );
+const { Pedidos } = require('../models/pedidoModel');
 const {SECRET_TOKEN} = require('../config'); 
 const cors = require('../middlewares/cors');
 const validate = require('../middlewares/validateAdmiToken');
@@ -285,9 +286,44 @@ router.get('/carrito/:email', (req, res) => {
 })
 
 // Ruta para agregar un nuevo pedido 
-router.post('addNewPedido', ( req, res ) => {
+router.post('/addNewPedido', ( req, res ) => {
+    let name = req.body.name;
+    let email = req.body.email;
+    let direccion = req.body.direccion;
+    let productos = req.body.productos;
 
+    console.log(direccion);
+
+    const newPedido = {
+        name,
+        email,
+        direccion,
+        productos
+    }
+    Pedidos.addNuevoPedido( newPedido )
+    .then( results => {
+        return res.status( 201 ).json(results);
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    })
 });
+
+// Ruta que regresa los pedidos de un usuario
+router.get('/pedidosUsuario/:email', ( req, res ) => {
+    let email = req.params.email;
+
+    Pedidos
+    .getPedidosByEmail( email )
+    .then( results =>{
+        return res.status( 200 ).json(results);
+    })
+    .catch( err => {
+        res.statusMessage =  "Somethong went wrong with the DB";
+        return res.status( 500 ).end();
+    })
+})
 
 // Ruta para eliminar un usuario
 router.delete('/deleteUsuario/:correo', validate, ( req, res ) => {

@@ -1,26 +1,4 @@
 const mongoose = require( 'mongoose' );
-// const { Brownies } = require('./browniesModel');
-// const { Pasteles } = require('./pastelModel');
-// const { Paquetes } = require('./paqueteModel');
-
-const direccionSchema = mongoose.Schema({
-    dir : {
-        type : String,
-        requiered : true
-    },
-    ciudad : {
-        type : String,
-        requiered : true
-    },
-    estado : {
-        type : String,
-        requiered : true
-    },
-    codigo : {
-        type : String,
-        requiered : true
-    }
-});
 
 const pedidoSchema = mongoose.Schema({
     name : {
@@ -32,10 +10,42 @@ const pedidoSchema = mongoose.Schema({
         requiered : true
     },
     direccion : {
-        type : direccionSchema,
-        requiered : true
+        dir : {
+            type : String,
+            requiered : true
+        },
+        ciudad : {
+            type : String,
+            requiered : true
+        },
+        estado : {
+            type : String,
+            requiered : true
+        },
+        codigo : {
+            type : Number,
+            requiered : true
+        }
     },
-    precioTotal : {
+    productos : [{
+        name : {
+            type : String,
+            requiered : true
+        },
+        cantidad : {
+            type : Number,
+            requiered : true
+        }, 
+        precioInd : {
+            type : Number,
+            requiered : true
+        },
+        precioTotal : {
+            type : Number,
+            requiered : true
+        }
+    }],
+    precioT : {
         type : Number,
         requiered : true
     }
@@ -43,7 +53,7 @@ const pedidoSchema = mongoose.Schema({
 
 mongoose.pluralize(null);
 
-const pedidosCollection = mongoose.model( 'Pedidos', paqueteSchema );
+const pedidosCollection = mongoose.model( 'Pedidos', pedidoSchema );
 
 const Pedidos = {
     addNuevoPedido : function( newPedido ){
@@ -51,6 +61,16 @@ const Pedidos = {
         .create( newPedido )
         .then( pedidoCreated => {
             return pedidoCreated;
+        })
+        .catch( err => {
+            return err;
+        })
+    },
+    getPedidosByEmail : function( email ){
+        return pedidosCollection
+        .find( {email : email})
+        .then( results => {
+            return results;
         })
         .catch( err => {
             return err;
